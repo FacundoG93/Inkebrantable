@@ -1,0 +1,2111 @@
+[
+    {
+        "id": "m00",
+        "nombre": "El Loco",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 0,
+        "col": 0,
+        "row": 0,
+        "significados": {
+            "derecho": {
+                "general": "Los principios, la inocencia, la espontaneidad, un espíritu libre. En general, El Loco es siempre un indicador de la novedad; así como de pureza y gran energía, sin dobleces, como el corazón abierto de un niño. Esta generalmente se considera una carta positiva, con la advertencia de que es importante tomarte el tiempo para asegurarte de que tú “miras por dónde vas.” Esta carta podría indicar un nuevo comienzo que tiene algún significado espiritual más profundo, ya que si bien su significado alcanza a todo lo nuevo que se pueda iniciar o tener, está más relacionada a cosas de trascendencia espiritual como un cambio de trabajo o de ciudad, un matrimonio o nueva pareja, que respecto a cosas más materiales como comprar un coche o una casa nueva. También puede significar eso, desde luego, pero en líneas generales se asocia a cambios espirituales en tu vida. La aparición de El Loco puede representar un importante “empezar de nuevo”. Es posible que haya mudanzas o viaje largo.",
+                "amor": "La aparición de El Loco en el contexto del amor podría significar que aún no estás lista para un compromiso, a pesar de que otros puedan estar presionando para que tengas uno, por ejemplo un novio que insiste en casarse o en probar con la convivencia. Esta carta es un presagio positivo para tu vida amorosa; mucha diversión parece estar a la vista. Eso sí, no dejes que tu deseo de divertirte te haga pasar por alto “el amor real” (verdadero, profundo amor) en caso de que esté llegando a ti ahora o dentro de un tiempo. Puede haber algunas pasiones de corta duración debido a la falta de compromiso y esta carta puede señalar la imposibilidad de un romance intenso o de vivir un gran amor, debido a que no son manejables las situaciones actuales, ni pueden ser controladas por la pareja.",
+                "trabajo": "Otras personas pueden no entender o apoyar tus nuevas ideas y / o propuestas, pero si tú sabes que tienes razón, presiona e insiste y trata de ayudarles a entender de dónde salen tus razonamientos e ideas. Esta carta a veces indica la búsqueda de una nueva posición dentro del plano laboral o incluso marca que el tiempo podría ser adecuado para que puedas “ir por tu cuenta” y empezar tu propio negocio. También puede existir una situación de poca concentración y apatía laboral, dispersión y procrastinación, todo ello con esfuerzos mentales importantes.",
+                "dinero": "En cuanto al dinero, El Loco tiene un significado extremadamente positivo. Tú puedes esperar un aumento si trabajas a salario o incrementar tus ventas y ganancias si trabajas por tu cuenta. Además, esta carta señala que encontrarás en ti misma una gran fuerza y confianza, un saber que no importa lo que pase financieramente, vas a estar bien y vas a “llegar a la cima.” Confía en ti misma, trabaja duro, y las cosas resultarán mejor de lo esperado. Es en general un momento apropiado para poner al día los papeles, verificar las inversiones, actualizar y controlar las cuentas.",
+                "salud": "Es posible que tú seas un poco propensa a los accidentes cuando El Loco  aparece; debes estar “presente en el momento”, atenta y no correr riesgos tontos. En general, sin embargo, cuando aparece esta tarjeta es muy probable que indique mejoras de tu salud. Si tú estás teniendo problemas de salud, seguramente vas a  encontrar a las personas y los elementos que necesitas para avanzar hacia una recuperación completa. Tener un pensamiento positivo es importante y debe venir con bastante facilidad a ti ahora. En algunos casos señala problemas de circulación sanguínea y recomienda descansar y reposar tanto como se pueda para restablecerse.",
+                "espiritual": "Cuando aparece esta carta, es probable que tengas el deseo de probar un montón de diferentes enfoques espirituales para ver cómo te ajustas a cada uno de ellos. No hay nada malo con esta exploración, sin embargo no debes dejarte llevar por una sola cosa, no te apresures ni encandiles con la primera idea o el primer enfoque, recuerda que tú no estás “comprando” nada, sólo “mirando”. Esta carta puede indicar una poderosa necesidad de obtener un conocimiento más profundo acerca de la espiritualidad, y tus amigos y familiares pueden no entender de dónde viene esto. En cualquier caso, tú tienes que hacer lo que es mejor para ti."
+            },
+            "invertido": {
+                "general": "Ingenuidad, insensatez, imprudencia, la asunción de riesgos. Cuando la carta de El Loco aparece invertida, puede demostrar que existe una necesidad de un nuevo comienzo, pero que hay algunas dudas acerca de hacer que suceda. Si bien se tiene la necesidad o hay conciencia de que hay que comenzar algo de nuevo, tú tienes una gran resistencia a iniciar este proceso. Esta carta también significa que estás actuando sin pensar, literalmente “a lo loco”, sin considerar las consecuencias. Tratas de vivir el presente, el momento, sin planear a futuro. En otro aspecto podría ser indicativo de que pueden estar engañándote y tú haces el papel de tonta por tu inocencia y credulidad.",
+                "amor": "Cuando el Loco aparece al revés en una pregunta relacionada con el amor, puede indicar que tu deseo de libertad e independencia muy bien podría estar interfiriendo con tu relación amorosa. La falta de planes y compromiso firme podría hacer peligrar la relación. Hay reticencia a sentar cabeza, al matrimonio o convivencia, a planificar la llegada de los hijos. En otro aspecto, la pareja acusa inestabilidad por comportamientos excéntricos de tu parte, ideas alocadas, quizá malas influencias que te rodean de amigos o familiares.",
+                "trabajo": "Tienes de momento alguna incapacidad para sacar adelante tus proyectos y para realizar el trabajo diario. Puedes tener excelentes ideas y planes para tu trabajo pero estás en una constante indecisión para actuar, no sabes si ponerlo todo, dudas de tus capacidades y talentos. También puede significar viajes de trabajo que se cancelan o demoran más de lo previsto",
+                "dinero": "En cuanto al dinero, El Loco invertido hace sonar unas campanillas de alerta. Debes atender muy bien lo que firmas, leer la letra chica de los contratos para no pagar altos costos sorpresivos luego. La carta indica que las cosas no sean tal vez como se ven en la superficie. Puede haber engaños y estafas en tu contra o incluso, proceder de ti. Debes estar atenta a la forma en que administras el dinero ya que hay riesgos de pérdidas por malas inversiones.",
+                "salud": "El Loco invertido pone de relieve la posibilidad de que serás un tanto propensa a los accidentes en un futuro próximo, sobre todo aquellos relacionados a la actividad deportiva o salidas al aire libre. Si padeces alguna dolencia, considera consultar otras opiniones o cambiar de médico. Intenta mantenerte con un fuerte pensamiento positivo.",
+                "espiritual": "La inversión de esta carta puede indicar que abandonas un sistema de creencias que has tenido por largo tiempo, por caso una religión, porque ya no te ofrece las respuestas que tú necesitas. Tienes necesidad de explorar nuevas ideas y conceptos por caminos quizá menos transitados. También puede significar que al menos por el momento, tu viaje espiritual está en una meseta, no hay avances, ya que posiblemente estás preocupada por cuestiones más físicas y terrenales que en el alimento espiritual, por tanto esta carta te insta a que no abandones tu espiritualidad."
+            }
+        }
+    },
+    {
+        "id": "m01",
+        "nombre": "El Mago",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 1,
+        "col": 1,
+        "row": 0,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m02",
+        "nombre": "La Sacerdotisa",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 2,
+        "col": 2,
+        "row": 0,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m03",
+        "nombre": "La Emperatriz",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 3,
+        "col": 3,
+        "row": 0,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m04",
+        "nombre": "El Emperador",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 4,
+        "col": 4,
+        "row": 0,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m05",
+        "nombre": "El Sumo Sacerdote",
+        "alternativo": "Hierofante",
+        "alternativo2": "El Papa",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 5,
+        "col": 5,
+        "row": 0,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m06",
+        "nombre": "Los Enamorados",
+        "alternativo": "Los Amantes",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 6,
+        "col": 6,
+        "row": 0,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m07",
+        "nombre": "El Carro",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 7,
+        "col": 7,
+        "row": 0,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m08",
+        "nombre": "La Fuerza",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 8,
+        "col": 8,
+        "row": 0,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m09",
+        "nombre": "El Ermitaño",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 9,
+        "col": 9,
+        "row": 0,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m10",
+        "nombre": "La Rueda de la Fortuna",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 10,
+        "col": 10,
+        "row": 0,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m11",
+        "nombre": "La Justicia",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 11,
+        "col": 11,
+        "row": 0,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m12",
+        "nombre": "El Colgado",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 12,
+        "col": 12,
+        "row": 0,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m13",
+        "nombre": "La Muerte",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 13,
+        "col": 0,
+        "row": 1,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m14",
+        "nombre": "La Templanza",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 14,
+        "col": 1,
+        "row": 1,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m15",
+        "nombre": "El Diablo",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 15,
+        "col": 2,
+        "row": 1,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m16",
+        "nombre": "La Torre",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 16,
+        "col": 3,
+        "row": 1,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m17",
+        "nombre": "La Estrella",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 17,
+        "col": 4,
+        "row": 1,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m18",
+        "nombre": "La Luna",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 18,
+        "col": 5,
+        "row": 1,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m19",
+        "nombre": "El Sol",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 19,
+        "col": 6,
+        "row": 1,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m20",
+        "nombre": "El Juicio",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 20,
+        "col": 7,
+        "row": 1,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "m21",
+        "nombre": "El Mundo",
+        "arcano": "Mayor",
+        "palo": null,
+        "numero": 21,
+        "col": 8,
+        "row": 1,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "b01",
+        "nombre": "As de Bastos",
+        "arcano": "Menor",
+        "palo": "Bastos",
+        "numero": 1,
+        "col": 9,
+        "row": 1,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "b02",
+        "nombre": "2 de Bastos",
+        "arcano": "Menor",
+        "palo": "Bastos",
+        "numero": 2,
+        "col": 10,
+        "row": 1,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "b03",
+        "nombre": "3 de Bastos",
+        "arcano": "Menor",
+        "palo": "Bastos",
+        "numero": 3,
+        "col": 11,
+        "row": 1,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "b04",
+        "nombre": "4 de Bastos",
+        "arcano": "Menor",
+        "palo": "Bastos",
+        "numero": 4,
+        "col": 12,
+        "row": 1,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "b05",
+        "nombre": "5 de Bastos",
+        "arcano": "Menor",
+        "palo": "Bastos",
+        "numero": 5,
+        "col": 0,
+        "row": 2,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "b06",
+        "nombre": "6 de Bastos",
+        "arcano": "Menor",
+        "palo": "Bastos",
+        "numero": 6,
+        "col": 1,
+        "row": 2,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "b07",
+        "nombre": "7 de Bastos",
+        "arcano": "Menor",
+        "palo": "Bastos",
+        "numero": 7,
+        "col": 2,
+        "row": 2,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "b08",
+        "nombre": "8 de Bastos",
+        "arcano": "Menor",
+        "palo": "Bastos",
+        "numero": 8,
+        "col": 3,
+        "row": 2,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "b09",
+        "nombre": "9 de Bastos",
+        "arcano": "Menor",
+        "palo": "Bastos",
+        "numero": 9,
+        "col": 4,
+        "row": 2,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "b10",
+        "nombre": "10 de Bastos",
+        "arcano": "Menor",
+        "palo": "Bastos",
+        "numero": 10,
+        "col": 5,
+        "row": 2,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "b11",
+        "nombre": "Sota de Bastos",
+        "arcano": "Menor",
+        "palo": "Bastos",
+        "numero": 11,
+        "col": 6,
+        "row": 2,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "b12",
+        "nombre": "Caballero de Bastos",
+        "arcano": "Menor",
+        "palo": "Bastos",
+        "numero": 12,
+        "col": 7,
+        "row": 2,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "b13",
+        "nombre": "Reina de Bastos",
+        "arcano": "Menor",
+        "palo": "Bastos",
+        "numero": 13,
+        "col": 8,
+        "row": 2,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "b14",
+        "nombre": "Rey de Bastos",
+        "arcano": "Menor",
+        "palo": "Bastos",
+        "numero": 14,
+        "col": 9,
+        "row": 2,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "c01",
+        "nombre": "As de Copas",
+        "arcano": "Menor",
+        "palo": "Copas",
+        "numero": 1,
+        "col": 10,
+        "row": 2,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "c02",
+        "nombre": "2 de Copas",
+        "arcano": "Menor",
+        "palo": "Copas",
+        "numero": 2,
+        "col": 11,
+        "row": 2,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "c03",
+        "nombre": "3 de Copas",
+        "arcano": "Menor",
+        "palo": "Copas",
+        "numero": 3,
+        "col": 12,
+        "row": 2,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "c04",
+        "nombre": "4 de Copas",
+        "arcano": "Menor",
+        "palo": "Copas",
+        "numero": 4,
+        "col": 0,
+        "row": 3,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "c05",
+        "nombre": "5 de Copas",
+        "arcano": "Menor",
+        "palo": "Copas",
+        "numero": 5,
+        "col": 1,
+        "row": 3,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "c06",
+        "nombre": "6 de Copas",
+        "arcano": "Menor",
+        "palo": "Copas",
+        "numero": 6,
+        "col": 2,
+        "row": 3,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "c07",
+        "nombre": "7 de Copas",
+        "arcano": "Menor",
+        "palo": "Copas",
+        "numero": 7,
+        "col": 3,
+        "row": 3,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "c08",
+        "nombre": "8 de Copas",
+        "arcano": "Menor",
+        "palo": "Copas",
+        "numero": 8,
+        "col": 4,
+        "row": 3,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "c09",
+        "nombre": "9 de Copas",
+        "arcano": "Menor",
+        "palo": "Copas",
+        "numero": 9,
+        "col": 5,
+        "row": 3,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "c10",
+        "nombre": "10 de Copas",
+        "arcano": "Menor",
+        "palo": "Copas",
+        "numero": 10,
+        "col": 6,
+        "row": 3,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "c11",
+        "nombre": "Sota de Copas",
+        "arcano": "Menor",
+        "palo": "Copas",
+        "numero": 11,
+        "col": 7,
+        "row": 3,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "c12",
+        "nombre": "Caballero de Copas",
+        "arcano": "Menor",
+        "palo": "Copas",
+        "numero": 12,
+        "col": 8,
+        "row": 3,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "c13",
+        "nombre": "Reina de Copas",
+        "arcano": "Menor",
+        "palo": "Copas",
+        "numero": 13,
+        "col": 9,
+        "row": 3,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "c14",
+        "nombre": "Rey de Copas",
+        "arcano": "Menor",
+        "palo": "Copas",
+        "numero": 14,
+        "col": 10,
+        "row": 3,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "e01",
+        "nombre": "As de Espadas",
+        "arcano": "Menor",
+        "palo": "Espadas",
+        "numero": 1,
+        "col": 11,
+        "row": 3,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "e02",
+        "nombre": "2 de Espadas",
+        "arcano": "Menor",
+        "palo": "Espadas",
+        "numero": 2,
+        "col": 12,
+        "row": 3,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "e03",
+        "nombre": "3 de Espadas",
+        "arcano": "Menor",
+        "palo": "Espadas",
+        "numero": 3,
+        "col": 0,
+        "row": 4,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "e04",
+        "nombre": "4 de Espadas",
+        "arcano": "Menor",
+        "palo": "Espadas",
+        "numero": 4,
+        "col": 1,
+        "row": 4,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "e05",
+        "nombre": "5 de Espadas",
+        "arcano": "Menor",
+        "palo": "Espadas",
+        "numero": 5,
+        "col": 2,
+        "row": 4,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "e06",
+        "nombre": "6 de Espadas",
+        "arcano": "Menor",
+        "palo": "Espadas",
+        "numero": 6,
+        "col": 3,
+        "row": 4,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "e07",
+        "nombre": "7 de Espadas",
+        "arcano": "Menor",
+        "palo": "Espadas",
+        "numero": 7,
+        "col": 4,
+        "row": 4,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "e08",
+        "nombre": "8 de Espadas",
+        "arcano": "Menor",
+        "palo": "Espadas",
+        "numero": 8,
+        "col": 5,
+        "row": 4,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "e09",
+        "nombre": "9 de Espadas",
+        "arcano": "Menor",
+        "palo": "Espadas",
+        "numero": 9,
+        "col": 6,
+        "row": 4,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "e10",
+        "nombre": "10 de Espadas",
+        "arcano": "Menor",
+        "palo": "Espadas",
+        "numero": 10,
+        "col": 7,
+        "row": 4,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "e11",
+        "nombre": "Sota de Espadas",
+        "arcano": "Menor",
+        "palo": "Espadas",
+        "numero": 11,
+        "col": 8,
+        "row": 4,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "e12",
+        "nombre": "Caballero de Espadas",
+        "arcano": "Menor",
+        "palo": "Espadas",
+        "numero": 12,
+        "col": 9,
+        "row": 4,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "e13",
+        "nombre": "Reina de Espadas",
+        "arcano": "Menor",
+        "palo": "Espadas",
+        "numero": 13,
+        "col": 10,
+        "row": 4,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "e14",
+        "nombre": "Rey de Espadas",
+        "arcano": "Menor",
+        "palo": "Espadas",
+        "numero": 14,
+        "col": 11,
+        "row": 4,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "o01",
+        "nombre": "As de Oros",
+        "arcano": "Menor",
+        "palo": "Oros",
+        "numero": 1,
+        "col": 12,
+        "row": 4,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "o02",
+        "nombre": "2 de Oros",
+        "arcano": "Menor",
+        "palo": "Oros",
+        "numero": 2,
+        "col": 0,
+        "row": 5,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "o03",
+        "nombre": "3 de Oros",
+        "arcano": "Menor",
+        "palo": "Oros",
+        "numero": 3,
+        "col": 1,
+        "row": 5,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "o04",
+        "nombre": "4 de Oros",
+        "arcano": "Menor",
+        "palo": "Oros",
+        "numero": 4,
+        "col": 2,
+        "row": 5,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "o05",
+        "nombre": "5 de Oros",
+        "arcano": "Menor",
+        "palo": "Oros",
+        "numero": 5,
+        "col": 3,
+        "row": 5,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "o06",
+        "nombre": "6 de Oros",
+        "arcano": "Menor",
+        "palo": "Oros",
+        "numero": 6,
+        "col": 4,
+        "row": 5,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "o07",
+        "nombre": "7 de Oros",
+        "arcano": "Menor",
+        "palo": "Oros",
+        "numero": 7,
+        "col": 5,
+        "row": 5,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "o08",
+        "nombre": "8 de Oros",
+        "arcano": "Menor",
+        "palo": "Oros",
+        "numero": 8,
+        "col": 6,
+        "row": 5,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "o09",
+        "nombre": "9 de Oros",
+        "arcano": "Menor",
+        "palo": "Oros",
+        "numero": 9,
+        "col": 7,
+        "row": 5,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "o10",
+        "nombre": "10 de Oros",
+        "arcano": "Menor",
+        "palo": "Oros",
+        "numero": 10,
+        "col": 8,
+        "row": 5,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "o11",
+        "nombre": "Sota de Oros",
+        "arcano": "Menor",
+        "palo": "Oros",
+        "numero": 11,
+        "col": 9,
+        "row": 5,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "o12",
+        "nombre": "Caballero de Oros",
+        "arcano": "Menor",
+        "palo": "Oros",
+        "numero": 12,
+        "col": 10,
+        "row": 5,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "o13",
+        "nombre": "Reina de Oros",
+        "arcano": "Menor",
+        "palo": "Oros",
+        "numero": 13,
+        "col": 11,
+        "row": 5,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    },
+    {
+        "id": "o14",
+        "nombre": "Rey de Oros",
+        "arcano": "Menor",
+        "palo": "Oros",
+        "numero": 14,
+        "col": 12,
+        "row": 5,
+        "significados": {
+            "derecho": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            },
+            "invertido": {
+                "general": "Agregar info",
+                "amor": "Agregar info",
+                "trabajo": "Agregar info",
+                "dinero": "Agregar info",
+                "salud": "Agregar info",
+                "espiritual": "Agregar info"
+            }
+        }
+    }
+]

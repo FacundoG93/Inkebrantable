@@ -1,0 +1,472 @@
+/* Reset y base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+        Arial, sans-serif;
+    background: #faf9f6;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    position: sticky;
+    top: 0;
+    background: #2f5a62;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    color: white;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+}
+
+/* Estilos para vista detalle con significados */
+.header-back {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.header-back:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.detalle-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 24px 16px;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.detalle-carta {
+    width: 80%;
+    max-width: 280px;
+    aspect-ratio: 2/3.5;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1.5px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.detalle-imagen {
+    width: 100%;
+    height: 100%;
+    background-image: url("/cartas.webp");
+    background-size: 1300% 600%;
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
+}
+
+.detalle-nombre {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2f5a62;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.detalle-info {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.significado-bloque {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.significado-bloque.invertido {
+    background: #f9f9f9;
+}
+
+.significado-titulo {
+    font-size: 20px;
+    color: #2f5a62;
+    margin-bottom: 16px;
+    text-align: center;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.significado-item {
+    margin-bottom: 16px;
+}
+
+.significado-item:last-child {
+    margin-bottom: 0;
+}
+
+.significado-subtitulo {
+    font-size: 16px;
+    color: #2f5a62;
+    margin-bottom: 4px;
+    text-transform: capitalize;
+}
+
+.significado-texto {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* Searchbar */
+.searchbar-container {
+    position: relative;
+    padding: 12px;
+    background: #faf9f6;
+}
+
+.search-icon {
+    position: absolute;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.searchbar {
+    width: 100%;
+    height: 40px;
+    background: #e8eef2;
+    border-radius: 12px;
+    border: none;
+    padding-left: 40px;
+    padding-right: 16px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    transition: box-shadow 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.searchbar::placeholder {
+    color: #999;
+    font-size: 15px;
+}
+
+.searchbar:focus {
+    box-shadow: 0 0 0 2px #2f5a62;
+    background: #fff;
+}
+
+/* Ocultar la X del input search en algunos navegadores */
+.searchbar::-webkit-search-decoration,
+.searchbar::-webkit-search-cancel-button,
+.searchbar::-webkit-search-results-button,
+.searchbar::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+}
+
+/* Catálogo */
+.catalogo {
+    flex: 1;
+    padding: 0 12px;
+}
+
+.grid-cartas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+    gap: 8px;
+    padding: 4px 0 12px;
+}
+
+/* Carta individual */
+.carta {
+    cursor: pointer;
+    border-radius: 6px;
+    overflow: hidden;
+    background: white;
+    border: 1.5px solid #e0e0e0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+    aspect-ratio: 2/3.5;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+.carta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-color: #2f5a62;
+}
+
+.carta:active {
+    transform: scale(0.97);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.carta:focus-visible {
+    outline: 2px solid #2f5a62;
+    outline-offset: 2px;
+}
+
+.carta-imagen {
+    width: 100%;
+    height: 100%;
+    background-image: url("/cartas.webp");
+    background-size: 1300% 600%;
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
+}
+
+/* Paginación */
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.pag-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #2f5a62;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.pag-btn:hover:not(:disabled) {
+    background: #e8eef2;
+}
+
+.pag-btn:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.pag-num {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #888;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.pag-num:hover {
+    background: #e8eef2;
+}
+
+.pag-num.activo {
+    color: #2f5a62;
+    font-weight: bold;
+}
+
+/* Sin resultados */
+.sin-resultados {
+    text-align: center;
+    padding: 60px 20px;
+    color: #888;
+    font-size: 16px;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    animation: fadeIn 0.2s ease;
+    padding: 16px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 400px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.25s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: #f0f0f0;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.modal-close:hover {
+    background: #e0e0e0;
+}
+
+.modal-carta-imagen {
+    width: 100%;
+    aspect-ratio: 2/3.5;
+    background-image: url("/cartas.webp");
+    background-size: 1300% 600%;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.modal-info {
+    text-align: center;
+}
+
+.modal-nombre {
+    font-size: 22px;
+    font-weight: 700;
+    color: #2f5a62;
+    margin-bottom: 8px;
+}
+
+.modal-detalle {
+    font-size: 15px;
+    color: #888;
+}
+
+/* Responsive: mobile-first */
+@media (min-width: 600px) {
+    .grid-cartas {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+    }
+
+    .carta {
+        border-radius: 8px;
+    }
+
+    .modal-content {
+        max-width: 500px;
+        padding: 32px;
+    }
+}
+
+@media (min-width: 900px) {
+    .grid-cartas {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 12px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .searchbar-container {
+        max-width: 600px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+/* Accesibilidad: reducir animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+    .carta,
+    .modal-overlay,
+    .modal-content {
+        transition: none;
+        animation: none;
+    }
+
+    .carta:hover {
+        transform: none;
+    }
+
+    .carta:active {
+        transform: none;
+    }
+}
