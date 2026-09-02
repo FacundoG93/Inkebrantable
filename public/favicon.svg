@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Fondo de la carta -->
+  <rect x="8" y="4" width="48" height="56" rx="6" ry="6" fill="#2f5a62" stroke="#1e4a52" stroke-width="2"/>
+  
+  <!-- Borde interior decorativo -->
+  <rect x="12" y="8" width="40" height="48" rx="4" ry="4" fill="none" stroke="#faf9f6" stroke-width="1.5"/>
+  
+  <!-- Símbolo de estrella de 8 puntas (representa lo místico) -->
+  <g fill="#e7bb3f">
+    <!-- Punta superior -->
+    <polygon points="32,14 34,22 32,26 30,22"/>
+    <!-- Punta inferior -->
+    <polygon points="32,50 30,42 32,38 34,42"/>
+    <!-- Punta izquierda -->
+    <polygon points="14,32 22,30 26,32 22,34"/>
+    <!-- Punta derecha -->
+    <polygon points="50,32 42,34 38,32 42,30"/>
+    <!-- Diagonales -->
+    <polygon points="19,19 24,24 26,26 22,27"/>
+    <polygon points="45,19 40,24 38,26 42,27"/>
+    <polygon points="19,45 24,40 26,38 22,37"/>
+    <polygon points="45,45 40,40 38,38 42,37"/>
+  </g>
+  
+  <!-- Luna creciente -->
+  <path d="M28,30 Q34,26 36,32 Q38,38 32,40 Q26,42 24,36 Q22,32 28,30 Z" fill="#faf9f6" opacity="0.9"/>
+  
+  <!-- Sol pequeño -->
+  <circle cx="38" cy="30" r="4" fill="#e7bb3f"/>
+  <g stroke="#e7bb3f" stroke-width="1.5">
+    <line x1="38" y1="24" x2="38" y2="22"/>
+    <line x1="38" y1="36" x2="38" y2="38"/>
+    <line x1="32" y1="30" x2="30" y2="30"/>
+    <line x1="44" y1="30" x2="46" y2="30"/>
+  </g>
+</svg>

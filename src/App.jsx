@@ -268,7 +268,7 @@ export default function App() {
     return (
         <div className="app">
             <header className="header">
-                <h1>Cartas</h1>
+                <h1>Inkebrantable</h1>
             </header>
 
             <div className="searchbar-container">
@@ -363,10 +363,13 @@ export default function App() {
                             }
 
                             if (tipo === "menor" && carta.palo !== ultimoPalo) {
+                                const esPrimerPalo = ultimoPalo === null; // true solo para el primer palo
                                 encabezado = (
                                     <React.Fragment key={`sub-${carta.palo}`}>
                                         {encabezado}
-                                        <h3 className="palo-titulo">
+                                        <h3
+                                            className={`palo-titulo ${esPrimerPalo ? "primer-palo" : ""}`}
+                                        >
                                             {carta.palo}
                                         </h3>
                                     </React.Fragment>

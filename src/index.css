@@ -290,7 +290,12 @@ body {
     font-size: 1.125rem; /* 18px */
     font-weight: 600;
     color: #555;
-    margin-top: 1.5rem; /* Se mantiene en rem porque ya era relativo */
+    margin-top: 1.5rem; /* Margen superior para cada palo */
+}
+
+/* El primer palo (Bastos) no debe tener margen superior */
+.palo-titulo.primer-palo {
+    margin-top: 0;
 }
 
 /* Carta individual */
