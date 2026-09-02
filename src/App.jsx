@@ -13,13 +13,34 @@ const TOTAL_ROWS = 6;
 const COLS_PERCENT = 100 / (TOTAL_COLS - 1);
 const ROWS_PERCENT = 100 / (TOTAL_ROWS - 1);
 
-// Componente Carta memoizado — no se re-renderiza si las props no cambian
+// Componente Carta memoizado
 const Carta = memo(function Carta({ carta, onClick }) {
     const bgPosition = `${carta.col * COLS_PERCENT}% ${carta.row * ROWS_PERCENT}%`;
 
+    // Determinar clase según categoría
+    let categoriaClase = "carta-mayor";
+    if (carta.arcano === "Menor") {
+        switch (carta.palo) {
+            case "Bastos":
+                categoriaClase = "carta-bastos";
+                break;
+            case "Copas":
+                categoriaClase = "carta-copas";
+                break;
+            case "Espadas":
+                categoriaClase = "carta-espadas";
+                break;
+            case "Oros":
+                categoriaClase = "carta-oros";
+                break;
+            default:
+                categoriaClase = "carta-menor";
+        }
+    }
+
     return (
         <div
-            className="carta"
+            className={`carta ${categoriaClase}`}
             onClick={() => onClick(carta.id)}
             role="button"
             tabIndex={0}
@@ -34,15 +55,32 @@ const Carta = memo(function Carta({ carta, onClick }) {
     );
 });
 
-// Función para obtener carta por id
 const getCartaById = (id) => cardsData.find((c) => c.id === id);
+
+// Función para ordenar por categoría
+const ordenCategoria = (carta) => {
+    if (carta.arcano === "Mayor") return 0;
+    switch (carta.palo) {
+        case "Bastos":
+            return 1;
+        case "Copas":
+            return 2;
+        case "Espadas":
+            return 3;
+        case "Oros":
+            return 4;
+        default:
+            return 5;
+    }
+};
 
 export default function App() {
     const [query, setQuery] = useState("");
     const [pagina, setPagina] = useState(1);
-    const [cartaId, setCartaId] = useState(null); // null = lista, string = detalle
+    const [categoria, setCategoria] = useState("todos"); // 'todos', 'mayores', 'bastos', 'copas', 'espadas', 'oros'
+    const [cartaId, setCartaId] = useState(null);
 
-    // Sincronizar con el hash de la URL
+    // Sincronizar con hash de URL para la vista detalle
     useEffect(() => {
         const handleHashChange = () => {
             const hash = window.location.hash;
@@ -53,30 +91,23 @@ export default function App() {
                 setCartaId(null);
             }
         };
-
         window.addEventListener("hashchange", handleHashChange);
-        // Al cargar la página, verificar si hay hash
         handleHashChange();
-
         return () => window.removeEventListener("hashchange", handleHashChange);
     }, []);
 
-    // Navegar a detalle
     const irADetalle = (id) => {
         window.location.hash = `#/carta/${id}`;
         setCartaId(id);
     };
 
-    // Volver a la lista
     const volverALista = () => {
         window.location.hash = "";
         setCartaId(null);
     };
 
-    // useDeferredValue para no bloquear el typing
     const deferredQuery = useDeferredValue(query);
 
-    // Normalizar texto para búsqueda tolerante a tildes
     const normalizar = (texto) => {
         return texto
             .toLowerCase()
@@ -84,28 +115,44 @@ export default function App() {
             .replace(/[\u0300-\u036f]/g, "");
     };
 
-    // Filtrar cartas con useMemo
+    // Filtrado combinado por texto y categoría, y ordenado
     const cartasFiltradas = useMemo(() => {
-        if (!deferredQuery.trim()) return cardsData;
+        let filtradas = cardsData;
 
-        const busqueda = normalizar(deferredQuery);
+        // Aplicar filtro por categoría
+        if (categoria !== "todos") {
+            if (categoria === "mayores") {
+                filtradas = filtradas.filter((c) => c.arcano === "Mayor");
+            } else {
+                filtradas = filtradas.filter(
+                    (c) =>
+                        c.arcano === "Menor" &&
+                        c.palo.toLowerCase() === categoria,
+                );
+            }
+        }
 
-        return cardsData.filter((carta) => {
-            const nombre = normalizar(carta.nombre);
-            const palo = carta.palo ? normalizar(carta.palo) : "";
-            const arcano = normalizar(carta.arcano);
-            const numero = carta.numero ? String(carta.numero) : "";
+        // Aplicar búsqueda por texto
+        if (deferredQuery.trim()) {
+            const busqueda = normalizar(deferredQuery);
+            filtradas = filtradas.filter((carta) => {
+                const nombre = normalizar(carta.nombre);
+                const palo = carta.palo ? normalizar(carta.palo) : "";
+                const arcano = normalizar(carta.arcano);
+                const numero = carta.numero ? String(carta.numero) : "";
+                return (
+                    nombre.includes(busqueda) ||
+                    palo.includes(busqueda) ||
+                    arcano.includes(busqueda) ||
+                    numero.includes(busqueda)
+                );
+            });
+        }
 
-            return (
-                nombre.includes(busqueda) ||
-                palo.includes(busqueda) ||
-                arcano.includes(busqueda) ||
-                numero.includes(busqueda)
-            );
-        });
-    }, [deferredQuery]);
+        // Ordenar por categoría para agrupar visualmente
+        return filtradas.sort((a, b) => ordenCategoria(a) - ordenCategoria(b));
+    }, [deferredQuery, categoria]);
 
-    // Calcular paginación
     const totalPaginas = Math.ceil(cartasFiltradas.length / PAGE_SIZE);
     const paginaActual = Math.min(pagina, totalPaginas || 1);
 
@@ -114,41 +161,38 @@ export default function App() {
         return cartasFiltradas.slice(inicio, inicio + PAGE_SIZE);
     }, [cartasFiltradas, paginaActual]);
 
-    // Resetear a página 1 cuando cambia la búsqueda
     const handleBusqueda = (e) => {
         setQuery(e.target.value);
         setPagina(1);
     };
 
-    // Generar números de página para el footer
+    const handleCategoria = (cat) => {
+        setCategoria(cat);
+        setPagina(1);
+    };
+
     const numerosPagina = useMemo(() => {
         if (totalPaginas <= 1) return [];
-
         const paginas = [];
         const maxVisibles = 5;
         let inicio = Math.max(1, paginaActual - 2);
         let fin = Math.min(totalPaginas, inicio + maxVisibles - 1);
-
         if (fin - inicio < maxVisibles - 1) {
             inicio = Math.max(1, fin - maxVisibles + 1);
         }
-
         for (let i = inicio; i <= fin; i++) {
             paginas.push(i);
         }
-
         return paginas;
     }, [paginaActual, totalPaginas]);
 
-    // Si estamos en vista detalle
+    // Vista detalle
     if (cartaId) {
         const carta = getCartaById(cartaId);
         if (!carta) {
-            // Si no existe, volver a la lista
             volverALista();
             return null;
         }
-
         const bgPosition = `${carta.col * COLS_PERCENT}% ${carta.row * ROWS_PERCENT}%`;
         const significados = carta.significados || {
             derecho: {},
@@ -167,7 +211,6 @@ export default function App() {
                     </button>
                     <h1>Cartas</h1>
                 </header>
-
                 <main className="detalle-container">
                     <div className="detalle-carta">
                         <div
@@ -182,7 +225,6 @@ export default function App() {
                         {carta.numero ? ` · Número ${carta.numero}` : ""}
                     </p>
 
-                    {/* Significado al derecho */}
                     <div className="significado-bloque">
                         <h3 className="significado-titulo">Al derecho</h3>
                         {Object.entries(significados.derecho || {}).map(
@@ -199,7 +241,6 @@ export default function App() {
                         )}
                     </div>
 
-                    {/* Significado invertido */}
                     <div className="significado-bloque invertido">
                         <h3 className="significado-titulo">Invertida</h3>
                         {Object.entries(significados.invertido || {}).map(
@@ -221,6 +262,9 @@ export default function App() {
     }
 
     // Vista lista
+    let ultimoTipo = null; // 'mayor' o 'menor'
+    let ultimoPalo = null;
+
     return (
         <div className="app">
             <header className="header">
@@ -250,18 +294,93 @@ export default function App() {
                 />
             </div>
 
+            {/* Filtros por categoría */}
+            <div className="filtros-categoria">
+                <button
+                    className={`filtro-btn ${categoria === "todos" ? "activo" : ""}`}
+                    onClick={() => handleCategoria("todos")}
+                >
+                    Todas
+                </button>
+                <button
+                    className={`filtro-btn ${categoria === "mayores" ? "activo" : ""}`}
+                    onClick={() => handleCategoria("mayores")}
+                >
+                    Arcanos Mayores
+                </button>
+                <button
+                    className={`filtro-btn ${categoria === "bastos" ? "activo" : ""}`}
+                    onClick={() => handleCategoria("bastos")}
+                >
+                    Bastos
+                </button>
+                <button
+                    className={`filtro-btn ${categoria === "copas" ? "activo" : ""}`}
+                    onClick={() => handleCategoria("copas")}
+                >
+                    Copas
+                </button>
+                <button
+                    className={`filtro-btn ${categoria === "espadas" ? "activo" : ""}`}
+                    onClick={() => handleCategoria("espadas")}
+                >
+                    Espadas
+                </button>
+                <button
+                    className={`filtro-btn ${categoria === "oros" ? "activo" : ""}`}
+                    onClick={() => handleCategoria("oros")}
+                >
+                    Oros
+                </button>
+            </div>
+
             <main className="catalogo">
                 {cartasPaginadas.length === 0 ? (
                     <p className="sin-resultados">No se encontraron cartas</p>
                 ) : (
                     <div className="grid-cartas">
-                        {cartasPaginadas.map((carta) => (
-                            <Carta
-                                key={carta.id}
-                                carta={carta}
-                                onClick={irADetalle}
-                            />
-                        ))}
+                        {cartasPaginadas.map((carta, index) => {
+                            const tipo =
+                                carta.arcano === "Mayor" ? "mayor" : "menor";
+                            let encabezado = null;
+
+                            if (index === 0 || tipo !== ultimoTipo) {
+                                const esPrimerMenor =
+                                    carta.arcano === "Menor" &&
+                                    ultimoTipo === "mayor";
+                                encabezado = (
+                                    <h2
+                                        key={`encabezado-${tipo}`}
+                                        className={`categoria-titulo ${esPrimerMenor ? "primer-menor" : ""}`}
+                                    >
+                                        {carta.arcano === "Mayor"
+                                            ? "Arcanos Mayores"
+                                            : "Arcanos Menores"}
+                                    </h2>
+                                );
+                                ultimoTipo = tipo;
+                                ultimoPalo = null;
+                            }
+
+                            if (tipo === "menor" && carta.palo !== ultimoPalo) {
+                                encabezado = (
+                                    <React.Fragment key={`sub-${carta.palo}`}>
+                                        {encabezado}
+                                        <h3 className="palo-titulo">
+                                            {carta.palo}
+                                        </h3>
+                                    </React.Fragment>
+                                );
+                                ultimoPalo = carta.palo;
+                            }
+
+                            return (
+                                <React.Fragment key={carta.id}>
+                                    {encabezado}
+                                    <Carta carta={carta} onClick={irADetalle} />
+                                </React.Fragment>
+                            );
+                        })}
                     </div>
                 )}
             </main>

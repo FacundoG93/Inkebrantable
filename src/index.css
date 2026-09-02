@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 100%; /* 1rem = 16px por defecto */
+}
+
 body {
     font-family:
         -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
@@ -13,6 +17,7 @@ body {
     color: #333;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
 }
 
 #root {
@@ -32,34 +37,33 @@ body {
     position: sticky;
     top: 0;
     background: #2f5a62;
-    height: 56px;
+    height: 3.5rem; /* 56px */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 100;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1); /* 1px 3px */
 }
 
 .header h1 {
     color: white;
     font-weight: 700;
-    font-size: 24px;
-    letter-spacing: 0.5px;
+    font-size: 1.5rem; /* 24px */
+    letter-spacing: 0.03125rem; /* 0.5px */
 }
 
-/* Estilos para vista detalle con significados */
 .header-back {
     background: none;
     border: none;
     color: white;
-    font-size: 24px;
+    font-size: 1.5rem; /* 24px */
     cursor: pointer;
     position: absolute;
-    left: 16px;
+    left: 1rem; /* 16px */
     top: 50%;
     transform: translateY(-50%);
-    padding: 4px 8px;
-    border-radius: 6px;
+    padding: 0.25rem 0.5rem; /* 4px 8px */
+    border-radius: 0.375rem; /* 6px */
     transition: background 0.2s;
     -webkit-tap-highlight-color: transparent;
 }
@@ -68,27 +72,28 @@ body {
     background: rgba(255, 255, 255, 0.1);
 }
 
+/* Vista detalle */
 .detalle-container {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 24px 16px;
-    max-width: 600px;
+    padding: 1.5rem 1rem; /* 24px 16px */
+    max-width: 37.5rem; /* 600px */
     margin: 0 auto;
     width: 100%;
 }
 
 .detalle-carta {
     width: 80%;
-    max-width: 280px;
+    max-width: 17.5rem; /* 280px */
     aspect-ratio: 2/3.5;
-    margin-bottom: 24px;
-    border-radius: 12px;
+    margin-bottom: 1.5rem; /* 24px */
+    border-radius: 0.75rem; /* 12px */
     overflow: hidden;
-    border: 1.5px solid #e0e0e0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 0.09375rem solid #e0e0e0; /* 1.5px */
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08); /* 4px 12px */
 }
 
 .detalle-imagen {
@@ -101,44 +106,52 @@ body {
 }
 
 .detalle-nombre {
-    font-size: 24px;
+    font-size: 1.5rem; /* 24px */
     font-weight: 700;
     color: #2f5a62;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem; /* 8px */
     text-align: center;
 }
 
 .detalle-info {
-    font-size: 16px;
+    font-size: 1rem; /* 16px */
     color: #666;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem; /* 24px */
     text-align: center;
 }
 
 .significado-bloque {
     background: white;
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: 0.75rem; /* 12px */
+    padding: 1.25rem; /* 20px */
     width: 100%;
-    border: 1px solid #e0e0e0;
-    margin-bottom: 20px;
+    border: 0.0625rem solid #e0e0e0; /* 1px */
+    margin-bottom: 1.25rem; /* 20px */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.03); /* 2px 4px */
 }
 
 .significado-bloque.invertido {
-    background: #f9f9f9;
+    background: #f5f7f9;
+    border-left: 0.25rem solid #c0392b; /* 4px */
 }
 
 .significado-titulo {
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
+    font-weight: 700;
     color: #2f5a62;
-    margin-bottom: 16px;
+    margin-bottom: 1rem; /* 16px */
     text-align: center;
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 10px;
+    border-bottom: 0.125rem solid #e0e0e0; /* 2px */
+    padding-bottom: 0.625rem; /* 10px */
+    text-transform: uppercase;
+    letter-spacing: 0.0625rem; /* 1px */
 }
 
 .significado-item {
-    margin-bottom: 16px;
+    margin-bottom: 1rem; /* 16px */
+    padding: 0.625rem; /* 10px */
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 0.5rem; /* 8px */
 }
 
 .significado-item:last-child {
@@ -146,42 +159,45 @@ body {
 }
 
 .significado-subtitulo {
-    font-size: 16px;
-    color: #2f5a62;
-    margin-bottom: 4px;
+    font-size: 1rem; /* 16px */
+    font-weight: 600;
+    color: #1e4a52;
+    margin-bottom: 0.375rem; /* 6px */
     text-transform: capitalize;
 }
 
 .significado-texto {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #444;
+    font-size: 0.9375rem; /* 15px */
+    line-height: 1.7;
+    color: #333;
 }
 
-/* Searchbar */
+/* Barra de búsqueda */
 .searchbar-container {
     position: relative;
-    padding: 12px;
+    padding: 0.75rem; /* 12px */
     background: #faf9f6;
 }
 
 .search-icon {
     position: absolute;
-    left: 24px;
+    left: 1.5rem; /* 24px */
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
+    width: 1.25rem; /* 20px */
+    height: 1.25rem; /* 20px */
 }
 
 .searchbar {
     width: 100%;
-    height: 40px;
+    height: 2.5rem; /* 40px */
     background: #e8eef2;
-    border-radius: 12px;
+    border-radius: 0.75rem; /* 12px */
     border: none;
-    padding-left: 40px;
-    padding-right: 16px;
-    font-size: 16px;
+    padding-left: 2.5rem; /* 40px */
+    padding-right: 1rem; /* 16px */
+    font-size: 1rem; /* 16px */
     color: #333;
     outline: none;
     transition: box-shadow 0.2s ease;
@@ -191,15 +207,14 @@ body {
 
 .searchbar::placeholder {
     color: #999;
-    font-size: 15px;
+    font-size: 0.9375rem; /* 15px */
 }
 
 .searchbar:focus {
-    box-shadow: 0 0 0 2px #2f5a62;
+    box-shadow: 0 0 0 0.125rem #2f5a62; /* 2px */
     background: #fff;
 }
 
-/* Ocultar la X del input search en algunos navegadores */
 .searchbar::-webkit-search-decoration,
 .searchbar::-webkit-search-cancel-button,
 .searchbar::-webkit-search-results-button,
@@ -207,27 +222,85 @@ body {
     -webkit-appearance: none;
 }
 
+/* Filtros por categoría */
+.filtros-categoria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem; /* 8px */
+    padding: 0 0.75rem 0.75rem; /* 0 12px 12px */
+    background: #faf9f6;
+    justify-content: center;
+}
+
+.filtro-btn {
+    background: #e8eef2;
+    border: none;
+    border-radius: 1.25rem; /* 20px */
+    padding: 0.5rem 1rem; /* 8px 16px */
+    font-size: 0.875rem; /* 14px */
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    white-space: nowrap;
+}
+
+.filtro-btn:hover {
+    background: #d0dde5;
+}
+
+.filtro-btn.activo {
+    background: #2f5a62;
+    color: white;
+    font-weight: 600;
+}
+
 /* Catálogo */
 .catalogo {
     flex: 1;
-    padding: 0 12px;
+    padding: 0 0.75rem; /* 12px */
 }
 
 .grid-cartas {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
-    gap: 8px;
-    padding: 4px 0 12px;
+    grid-template-columns: repeat(auto-fill, minmax(4.6875rem, 1fr)); /* 75px */
+    gap: 0.5rem; /* 8px */
+    padding: 0.25rem 0 0.75rem; /* 4px 0 12px */
+}
+
+/* Títulos de sección dentro del grid */
+.categoria-titulo,
+.palo-titulo {
+    grid-column: 1 / -1;
+    text-align: left;
+    margin: 0;
+    color: #2f5a62;
+}
+
+.categoria-titulo {
+    font-size: 1.375rem; /* 22px */
+    font-weight: 700;
+}
+
+.categoria-titulo.primer-menor {
+    margin-top: 2rem; /* Se mantiene en rem porque ya era relativo */
+}
+
+.palo-titulo {
+    font-size: 1.125rem; /* 18px */
+    font-weight: 600;
+    color: #555;
+    margin-top: 1.5rem; /* Se mantiene en rem porque ya era relativo */
 }
 
 /* Carta individual */
 .carta {
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 0.375rem; /* 6px */
     overflow: hidden;
     background: white;
-    border: 1.5px solid #e0e0e0;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border: 0.09375rem solid #e0e0e0; /* 1.5px */
+    box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.05); /* 1px 2px */
     transition:
         transform 0.15s ease,
         box-shadow 0.15s ease;
@@ -237,19 +310,59 @@ body {
 }
 
 .carta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-0.125rem); /* 2px */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* 4px 8px */
     border-color: #2f5a62;
 }
 
 .carta:active {
     transform: scale(0.97);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.05); /* 1px 2px */
 }
 
 .carta:focus-visible {
-    outline: 2px solid #2f5a62;
-    outline-offset: 2px;
+    outline: 0.125rem solid #2f5a62; /* 2px */
+    outline-offset: 0.125rem; /* 2px */
+}
+
+/* Colores de borde y franja superior según categoría */
+.carta-mayor {
+    border-color: #8c45ff;
+}
+.carta-bastos {
+    border-color: #74a04f;
+}
+.carta-copas {
+    border-color: #e08436;
+}
+.carta-espadas {
+    border-color: #9acfd6;
+}
+.carta-oros {
+    border-color: #e7bb3f;
+}
+
+.carta::before {
+    content: "";
+    display: block;
+    height: 0.25rem; /* 4px */
+    border-radius: 0.25rem 0.25rem 0 0; /* 4px 4px 0 0 */
+}
+
+.carta-mayor::before {
+    background: #8c45ff;
+}
+.carta-bastos::before {
+    background: #74a04f;
+}
+.carta-copas::before {
+    background: #e08436;
+}
+.carta-espadas::before {
+    background: #9acfd6;
+}
+.carta-oros::before {
+    background: #e7bb3f;
 }
 
 .carta-imagen {
@@ -266,19 +379,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 16px;
-    padding: 20px;
+    gap: 1rem; /* 16px */
+    padding: 1.25rem; /* 20px */
     flex-wrap: wrap;
 }
 
 .pag-btn {
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
     cursor: pointer;
     color: #2f5a62;
-    padding: 8px 12px;
-    border-radius: 6px;
+    padding: 0.5rem 0.75rem; /* 8px 12px */
+    border-radius: 0.375rem; /* 6px */
     transition: background 0.2s ease;
     -webkit-tap-highlight-color: transparent;
 }
@@ -295,11 +408,11 @@ body {
 .pag-num {
     background: none;
     border: none;
-    font-size: 16px;
+    font-size: 1rem; /* 16px */
     cursor: pointer;
     color: #888;
-    padding: 8px 12px;
-    border-radius: 6px;
+    padding: 0.5rem 0.75rem; /* 8px 12px */
+    border-radius: 0.375rem; /* 6px */
     transition: all 0.2s ease;
     -webkit-tap-highlight-color: transparent;
 }
@@ -316,150 +429,89 @@ body {
 /* Sin resultados */
 .sin-resultados {
     text-align: center;
-    padding: 60px 20px;
+    padding: 3.75rem 1.25rem; /* 60px 20px */
     color: #888;
-    font-size: 16px;
+    font-size: 1rem; /* 16px */
 }
 
-/* Modal */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 200;
-    animation: fadeIn 0.2s ease;
-    padding: 16px;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.modal-content {
-    background: white;
-    border-radius: 16px;
-    padding: 24px;
-    max-width: 400px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    animation: slideUp 0.25s ease;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.modal-close {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    background: #f0f0f0;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 24px;
-    cursor: pointer;
-    color: #666;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s ease;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.modal-close:hover {
-    background: #e0e0e0;
-}
-
-.modal-carta-imagen {
-    width: 100%;
-    aspect-ratio: 2/3.5;
-    background-image: url("/cartas.webp");
-    background-size: 1300% 600%;
-    background-repeat: no-repeat;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.modal-info {
-    text-align: center;
-}
-
-.modal-nombre {
-    font-size: 22px;
-    font-weight: 700;
-    color: #2f5a62;
-    margin-bottom: 8px;
-}
-
-.modal-detalle {
-    font-size: 15px;
-    color: #888;
-}
-
-/* Responsive: mobile-first */
-@media (min-width: 600px) {
+/* Responsive */
+@media (min-width: 37.5rem) {
+    /* 600px */
     .grid-cartas {
         grid-template-columns: repeat(7, 1fr);
-        gap: 10px;
+        gap: 0.625rem; /* 10px */
     }
 
     .carta {
-        border-radius: 8px;
-    }
-
-    .modal-content {
-        max-width: 500px;
-        padding: 32px;
+        border-radius: 0.5rem; /* 8px */
     }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 56.25rem) {
+    /* 900px */
     .grid-cartas {
         grid-template-columns: repeat(7, 1fr);
-        gap: 12px;
-        max-width: 900px;
+        gap: 0.75rem; /* 12px */
+        max-width: 56.25rem; /* 900px */
         margin: 0 auto;
     }
 
     .searchbar-container {
-        max-width: 600px;
+        max-width: 37.5rem; /* 600px */
         margin: 0 auto;
         width: 100%;
     }
 }
 
-/* Accesibilidad: reducir animaciones si el usuario lo prefiere */
+/* Monitores grandes: 87.5rem = 1400px */
+@media (min-width: 87.5rem) {
+    .grid-cartas {
+        grid-template-columns: repeat(10, 1fr);
+        gap: 0.875rem; /* 14px */
+        max-width: 75rem; /* 1200px */
+    }
+
+    .carta {
+        border-radius: 0.625rem; /* 10px */
+    }
+
+    .searchbar-container {
+        max-width: 43.75rem; /* 700px */
+    }
+
+    .filtros-categoria {
+        max-width: 75rem; /* 1200px */
+        margin: 0 auto;
+    }
+}
+
+/* Monitores muy grandes: 112.5rem = 1800px */
+@media (min-width: 112.5rem) {
+    .grid-cartas {
+        grid-template-columns: repeat(13, 1fr);
+        gap: 1rem; /* 16px */
+        max-width: 100rem; /* 1600px */
+    }
+
+    .carta {
+        border-radius: 0.75rem; /* 12px */
+    }
+
+    .searchbar-container {
+        max-width: 50rem; /* 800px */
+    }
+
+    .filtros-categoria {
+        max-width: 100rem; /* 1600px */
+    }
+}
+
+/* Accesibilidad */
 @media (prefers-reduced-motion: reduce) {
     .carta,
-    .modal-overlay,
-    .modal-content {
+    .header-back,
+    .filtro-btn {
         transition: none;
-        animation: none;
     }
 
     .carta:hover {
