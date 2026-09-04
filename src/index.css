@@ -473,7 +473,7 @@ body::after {
     margin: 0;
     color: var(--secondary-pink);
     font-family: "Lucida Blackletter Regular", sans-serif;
-    -webkit-text-stroke: 0.5px black;
+    -webkit-text-stroke: 0px black;
     line-height: 1;
 }
 
