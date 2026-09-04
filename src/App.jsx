@@ -13,11 +13,10 @@ const TOTAL_ROWS = 6;
 const COLS_PERCENT = 100 / (TOTAL_COLS - 1);
 const ROWS_PERCENT = 100 / (TOTAL_ROWS - 1);
 
-// Componente Carta memoizado
+// Componente Carta memoizado (sin cambios)
 const Carta = memo(function Carta({ carta, onClick }) {
     const bgPosition = `${carta.col * COLS_PERCENT}% ${carta.row * ROWS_PERCENT}%`;
 
-    // Determinar clase según categoría
     let categoriaClase = "carta-mayor";
     if (carta.arcano === "Menor") {
         switch (carta.palo) {
@@ -57,7 +56,6 @@ const Carta = memo(function Carta({ carta, onClick }) {
 
 const getCartaById = (id) => cardsData.find((c) => c.id === id);
 
-// Función para ordenar por categoría
 const ordenCategoria = (carta) => {
     if (carta.arcano === "Mayor") return 0;
     switch (carta.palo) {
@@ -77,10 +75,11 @@ const ordenCategoria = (carta) => {
 export default function App() {
     const [query, setQuery] = useState("");
     const [pagina, setPagina] = useState(1);
-    const [categoria, setCategoria] = useState("todos"); // 'todos', 'mayores', 'bastos', 'copas', 'espadas', 'oros'
+    const [categoria, setCategoria] = useState("todos");
     const [cartaId, setCartaId] = useState(null);
+    const [filtrosExpandidos, setFiltrosExpandidos] = useState(false); // Nuevo estado
 
-    // Sincronizar con hash de URL para la vista detalle
+    // Sincronizar con hash de URL (sin cambios)
     useEffect(() => {
         const handleHashChange = () => {
             const hash = window.location.hash;
@@ -115,11 +114,9 @@ export default function App() {
             .replace(/[\u0300-\u036f]/g, "");
     };
 
-    // Filtrado combinado por texto y categoría, y ordenado
     const cartasFiltradas = useMemo(() => {
         let filtradas = cardsData;
 
-        // Aplicar filtro por categoría
         if (categoria !== "todos") {
             if (categoria === "mayores") {
                 filtradas = filtradas.filter((c) => c.arcano === "Mayor");
@@ -132,7 +129,6 @@ export default function App() {
             }
         }
 
-        // Aplicar búsqueda por texto
         if (deferredQuery.trim()) {
             const busqueda = normalizar(deferredQuery);
             filtradas = filtradas.filter((carta) => {
@@ -149,7 +145,6 @@ export default function App() {
             });
         }
 
-        // Ordenar por categoría para agrupar visualmente
         return filtradas.sort((a, b) => ordenCategoria(a) - ordenCategoria(b));
     }, [deferredQuery, categoria]);
 
@@ -186,7 +181,7 @@ export default function App() {
         return paginas;
     }, [paginaActual, totalPaginas]);
 
-    // Vista detalle
+    // Vista detalle (sin cambios)
     if (cartaId) {
         const carta = getCartaById(cartaId);
         if (!carta) {
@@ -262,7 +257,7 @@ export default function App() {
     }
 
     // Vista lista
-    let ultimoTipo = null; // 'mayor' o 'menor'
+    let ultimoTipo = null;
     let ultimoPalo = null;
 
     return (
@@ -271,66 +266,108 @@ export default function App() {
                 <h1>Inkebrantable</h1>
             </header>
 
+            <img
+                src="/decoraciones/pink-spots.png"
+                alt="Manchas de pintura"
+                className="paint-splatter"
+            />
+
             <div className="searchbar-container">
                 <svg
-                    className="search-icon"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 430 430"
                     fill="none"
-                    stroke="#888"
-                    strokeWidth="2"
+                    className="search-icon star-icon"
                 >
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    <path
+                        stroke="currentColor"
+                        strokeLinecap="butt"
+                        strokeLinejoin="miter"
+                        strokeMiterlimit="15.2"
+                        strokeWidth="24"
+                        d="m219.054 48.3 38.9 119.9c.6 2 2.5 3.3 4.5 3.3h126.1c4.6 0 6.5 5.9 2.8 8.6l-50.3 36.6-51.6 37.5c-1.7 1.2-2.4 3.4-1.7 5.3l14.7 45.3 24.2 74.6c1.4 4.4-3.6 8-7.3 5.3l-47.6-34.6-54.3-39.5c-1.7-1.2-3.9-1.2-5.6 0l-48.5 35.3-53.4 38.8c-3.7 2.7-8.8-.9-7.3-5.3l22.2-68.2 16.8-51.7c.6-2-.1-4.1-1.7-5.3l-52.8-38.4-49.2-35.7c-3.7-2.7-1.8-8.6 2.8-8.6h125.8c2.1 0 3.9-1.3 4.5-3.3l39-119.9c1.4-4.4 7.6-4.4 9 0"
+                    />
                 </svg>
+
                 <input
                     type="search"
                     className="searchbar"
-                    placeholder="Busque una carta..."
+                    placeholder="Buscar carta..."
                     value={query}
                     onChange={handleBusqueda}
                     aria-label="Buscar cartas"
                 />
             </div>
 
-            {/* Filtros por categoría */}
-            <div className="filtros-categoria">
-                <button
-                    className={`filtro-btn ${categoria === "todos" ? "activo" : ""}`}
-                    onClick={() => handleCategoria("todos")}
+            {/* Filtros por categoría con toggle */}
+            <div className="filtros-contenedor">
+                <div
+                    className={`filtros-lista ${
+                        filtrosExpandidos ? "expandido" : "colapsado"
+                    }`}
                 >
-                    Todas
-                </button>
+                    <button
+                        className={`filtro-btn ${categoria === "todos" ? "activo" : ""}`}
+                        onClick={() => handleCategoria("todos")}
+                    >
+                        Todas
+                    </button>
+                    <button
+                        className={`filtro-btn ${categoria === "mayores" ? "activo" : ""}`}
+                        onClick={() => handleCategoria("mayores")}
+                    >
+                        Arcanos Mayores
+                    </button>
+                    <button
+                        className={`filtro-btn ${categoria === "bastos" ? "activo" : ""}`}
+                        onClick={() => handleCategoria("bastos")}
+                    >
+                        Bastos
+                    </button>
+                    <button
+                        className={`filtro-btn ${categoria === "copas" ? "activo" : ""}`}
+                        onClick={() => handleCategoria("copas")}
+                    >
+                        Copas
+                    </button>
+                    <button
+                        className={`filtro-btn ${categoria === "espadas" ? "activo" : ""}`}
+                        onClick={() => handleCategoria("espadas")}
+                    >
+                        Espadas
+                    </button>
+                    <button
+                        className={`filtro-btn ${categoria === "oros" ? "activo" : ""}`}
+                        onClick={() => handleCategoria("oros")}
+                    >
+                        Oros
+                    </button>
+                </div>
+
                 <button
-                    className={`filtro-btn ${categoria === "mayores" ? "activo" : ""}`}
-                    onClick={() => handleCategoria("mayores")}
+                    className="filtro-toggle"
+                    onClick={() => setFiltrosExpandidos((v) => !v)}
+                    aria-label={
+                        filtrosExpandidos
+                            ? "Colapsar filtros"
+                            : "Expandir filtros"
+                    }
                 >
-                    Arcanos Mayores
-                </button>
-                <button
-                    className={`filtro-btn ${categoria === "bastos" ? "activo" : ""}`}
-                    onClick={() => handleCategoria("bastos")}
-                >
-                    Bastos
-                </button>
-                <button
-                    className={`filtro-btn ${categoria === "copas" ? "activo" : ""}`}
-                    onClick={() => handleCategoria("copas")}
-                >
-                    Copas
-                </button>
-                <button
-                    className={`filtro-btn ${categoria === "espadas" ? "activo" : ""}`}
-                    onClick={() => handleCategoria("espadas")}
-                >
-                    Espadas
-                </button>
-                <button
-                    className={`filtro-btn ${categoria === "oros" ? "activo" : ""}`}
-                    onClick={() => handleCategoria("oros")}
-                >
-                    Oros
+                    <img
+                        src={
+                            filtrosExpandidos
+                                ? "/decoraciones/Tim-star(white).png"
+                                : "/decoraciones/Tim-star(grey).png"
+                        }
+                        alt={
+                            filtrosExpandidos
+                                ? "Colapsar filtros"
+                                : "Expandir filtros"
+                        }
+                        className={`filtro-toggle-img ${
+                            filtrosExpandidos ? "rotada-izquierda" : ""
+                        }`}
+                    />
                 </button>
             </div>
 
@@ -363,7 +400,7 @@ export default function App() {
                             }
 
                             if (tipo === "menor" && carta.palo !== ultimoPalo) {
-                                const esPrimerPalo = ultimoPalo === null; // true solo para el primer palo
+                                const esPrimerPalo = ultimoPalo === null;
                                 encabezado = (
                                     <React.Fragment key={`sub-${carta.palo}`}>
                                         {encabezado}

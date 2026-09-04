@@ -1,3 +1,74 @@
+@font-face {
+    font-family: "Lucida Blackletter Regular";
+    font-style: normal;
+    font-weight: normal;
+    src:
+        local("Lucida Blackletter Regular"),
+        url("/fonts/Lucida\ Blackletter\ Regular.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "UnquietSpirits";
+    src: url("/fonts/Unquiet\ Spirits.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "GhastlyPanic"; /* Nombre que usarás */
+    src: url("/fonts/Ghastly Panic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "gothical"; /* Nombre que usarás */
+    src: url("/public/fonts/Gothical.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "raven"; /* Nombre que usarás */
+    src: url("/public/fonts/Raven\ Song.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Sanctuary"; /* Nombre que usarás */
+    src: url("/public/fonts/Sanctuary.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "terror"; /* Nombre que usarás */
+    src: url("/public/fonts/Terrorplate.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ===== Variables de color ===== */
+:root {
+    --primary-pink: #dc2d95;
+    --primary-grey: #e5e5e7;
+    --primary-teal: #2f5a62;
+    --secondary-pink: #ed4bab;
+    --text-dark: #000;
+    --text-medium: #555;
+    --text-light: #888;
+    --bg-main: #faf9f6;
+    --white: #ffffff;
+}
+
 /* Reset y base */
 * {
     margin: 0;
@@ -6,18 +77,14 @@
 }
 
 html {
-    font-size: 100%; /* 1rem = 16px por defecto */
+    font-size: 100%;
 }
 
 body {
-    font-family:
-        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-        Arial, sans-serif;
-    background: #faf9f6;
-    color: #333;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    line-height: 1.5;
+    background-color: #faf9f6; /* Color de respaldo mientras carga la imagen */
+    background-image: url("/backgrounds/full-brickwall.png");
+    background-repeat: repeat; /* Repite en ambas direcciones (por defecto) */
+    background-size: 70rem auto; /* Ajusta el ancho a 200px, manteniendo proporción */
 }
 
 #root {
@@ -32,38 +99,49 @@ body {
     flex-direction: column;
 }
 
-/* Header */
+/* ===== HEADER ===== */
 .header {
     position: sticky;
     top: 0;
-    background: #2f5a62;
-    height: 3.5rem; /* 56px */
+    min-height: 3.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0.5rem 0;
+    box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1);
     z-index: 100;
-    box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1); /* 1px 3px */
+
+    /* Fondo con imagen */
+    background-color: #161515; /* Color de respaldo mientras carga la imagen */
+    background-image: url("/backgrounds/Textura2.jpg");
+    background-size: cover; /* Ajusta la imagen para cubrir todo el header */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
 }
 
 .header h1 {
-    color: white;
-    font-weight: 700;
-    font-size: 1.5rem; /* 24px */
-    letter-spacing: 0.03125rem; /* 0.5px */
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 0.03125rem;
+    color: var(--primary-pink);
+    font-family: "UnquietSpirits", "Lucida Blackletter Regular", sans-serif;
+    -webkit-text-stroke: 1px black;
+    line-height: 1;
+    transition: font-size 0.3s ease;
 }
 
 .header-back {
     background: none;
     border: none;
     color: white;
-    font-size: 1.5rem; /* 24px */
+    font-size: 1.5rem;
     cursor: pointer;
     position: absolute;
-    left: 1rem; /* 16px */
+    left: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    padding: 0.25rem 0.5rem; /* 4px 8px */
-    border-radius: 0.375rem; /* 6px */
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
     transition: background 0.2s;
     -webkit-tap-highlight-color: transparent;
 }
@@ -79,21 +157,21 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 1.5rem 1rem; /* 24px 16px */
-    max-width: 37.5rem; /* 600px */
+    padding: 1.5rem 1rem;
+    max-width: 37.5rem;
     margin: 0 auto;
     width: 100%;
 }
 
 .detalle-carta {
     width: 80%;
-    max-width: 17.5rem; /* 280px */
+    max-width: 17.5rem;
     aspect-ratio: 2/3.5;
-    margin-bottom: 1.5rem; /* 24px */
-    border-radius: 0.75rem; /* 12px */
+    margin-bottom: 1.5rem;
+    border-radius: 0.75rem;
     overflow: hidden;
-    border: 0.09375rem solid #e0e0e0; /* 1.5px */
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08); /* 4px 12px */
+    border: 0.09375rem solid #e0e0e0;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
 }
 
 .detalle-imagen {
@@ -106,52 +184,52 @@ body {
 }
 
 .detalle-nombre {
-    font-size: 1.5rem; /* 24px */
+    font-size: 1.5rem;
     font-weight: 700;
     color: #2f5a62;
-    margin-bottom: 0.5rem; /* 8px */
+    margin-bottom: 0.5rem;
     text-align: center;
 }
 
 .detalle-info {
-    font-size: 1rem; /* 16px */
+    font-size: 1rem;
     color: #666;
-    margin-bottom: 1.5rem; /* 24px */
+    margin-bottom: 1.5rem;
     text-align: center;
 }
 
 .significado-bloque {
     background: white;
-    border-radius: 0.75rem; /* 12px */
-    padding: 1.25rem; /* 20px */
+    border-radius: 0.75rem;
+    padding: 1.25rem;
     width: 100%;
-    border: 0.0625rem solid #e0e0e0; /* 1px */
-    margin-bottom: 1.25rem; /* 20px */
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.03); /* 2px 4px */
+    border: 0.0625rem solid #e0e0e0;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.03);
 }
 
 .significado-bloque.invertido {
     background: #f5f7f9;
-    border-left: 0.25rem solid #c0392b; /* 4px */
+    border-left: 0.25rem solid #c0392b;
 }
 
 .significado-titulo {
-    font-size: 1.25rem; /* 20px */
+    font-size: 1.25rem;
     font-weight: 700;
     color: #2f5a62;
-    margin-bottom: 1rem; /* 16px */
+    margin-bottom: 1rem;
     text-align: center;
-    border-bottom: 0.125rem solid #e0e0e0; /* 2px */
-    padding-bottom: 0.625rem; /* 10px */
+    border-bottom: 0.125rem solid #e0e0e0;
+    padding-bottom: 0.625rem;
     text-transform: uppercase;
-    letter-spacing: 0.0625rem; /* 1px */
+    letter-spacing: 0.0625rem;
 }
 
 .significado-item {
-    margin-bottom: 1rem; /* 16px */
-    padding: 0.625rem; /* 10px */
+    margin-bottom: 1rem;
+    padding: 0.625rem;
     background: rgba(255, 255, 255, 0.5);
-    border-radius: 0.5rem; /* 8px */
+    border-radius: 0.5rem;
 }
 
 .significado-item:last-child {
@@ -159,60 +237,91 @@ body {
 }
 
 .significado-subtitulo {
-    font-size: 1rem; /* 16px */
+    font-size: 1rem;
     font-weight: 600;
     color: #1e4a52;
-    margin-bottom: 0.375rem; /* 6px */
+    margin-bottom: 0.375rem;
     text-transform: capitalize;
 }
 
 .significado-texto {
-    font-size: 0.9375rem; /* 15px */
+    font-size: 0.9375rem;
     line-height: 1.7;
     color: #333;
+}
+
+/* Imagen de manchas de pintura */
+.paint-splatter {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* Puedes ajustar con margin negativo si quieres que se superponga un poco al header */
+    margin-top: -0.2rem;
 }
 
 /* Barra de búsqueda */
 .searchbar-container {
     position: relative;
-    padding: 0.75rem; /* 12px */
-    background: #faf9f6;
+    margin-top: 1rem; /* Antes era 20%, ahora el espacio lo da la imagen */
+    padding: 0;
 }
 
 .search-icon {
     position: absolute;
-    left: 1.5rem; /* 24px */
     top: 50%;
+    left: 1rem;
+    width: 2rem; /* Tamaño base */
+    height: 2rem;
+    color: var(--text-dark);
     transform: translateY(-50%);
     pointer-events: none;
-    width: 1.25rem; /* 20px */
-    height: 1.25rem; /* 20px */
+}
+
+.star-icon {
+    transform: translateY(-50%) rotate(-25deg); /* Inclinación */
 }
 
 .searchbar {
+    padding-left: 2.5rem;
+    padding-right: 1rem;
     width: 100%;
-    height: 2.5rem; /* 40px */
-    background: #e8eef2;
-    border-radius: 0.75rem; /* 12px */
-    border: none;
-    padding-left: 2.5rem; /* 40px */
-    padding-right: 1rem; /* 16px */
-    font-size: 1rem; /* 16px */
-    color: #333;
+    height: 3rem;
+    border: 2px dashed #000;
+    border-radius: 10rem;
     outline: none;
-    transition: box-shadow 0.2s ease;
-    -webkit-appearance: none;
+    font-size: 2rem;
     appearance: none;
+    -webkit-appearance: none;
+    background: linear-gradient(
+        130deg,
+        #b01979 0%,
+        #f89ad5 35%,
+        #e9abd2 65%,
+        #c9258e 100%
+    );
+    color: var(--text-dark);
+    transition: box-shadow 0.2s ease;
+    font-family: "Lucida Blackletter Regular", "UnquietSpirits", sans-serif;
 }
 
 .searchbar::placeholder {
-    color: #999;
-    font-size: 0.9375rem; /* 15px */
+    color: var(--text-dark);
+    font-size: 0.9375rem;
 }
 
 .searchbar:focus {
-    box-shadow: 0 0 0 0.125rem #2f5a62; /* 2px */
-    background: #fff;
+    color: var(--primary-pink);
+    box-shadow: 0 0 0 0.125rem var(--text-dark);
+    background: var(--text-dark);
+    border: 2px dashed var(--primary-pink);
+}
+
+.searchbar:focus::placeholder {
+    color: var(--primary-pink);
+}
+
+.searchbar-container:focus-within .search-icon {
+    color: var(--primary-pink); /* Mismo rosa que el texto y placeholder */
 }
 
 .searchbar::-webkit-search-decoration,
@@ -222,50 +331,104 @@ body {
     -webkit-appearance: none;
 }
 
-/* Filtros por categoría */
-.filtros-categoria {
+/* ===== FILTROS POR CATEGORÍA CON TOGGLE ===== */
+.filtros-contenedor {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 0.75rem 0.75rem;
+    gap: 0.5rem;
+}
+
+.filtros-lista {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem; /* 8px */
-    padding: 0 0.75rem 0.75rem; /* 0 12px 12px */
-    background: #faf9f6;
     justify-content: center;
+    flex: 1;
+    margin-top: 0.8rem;
+    min-width: 0;
+    gap: 0.5rem;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.filtros-lista.colapsado {
+    max-height: 1.75rem; /* Ajustado para evitar que se asome la segunda fila */
+}
+
+.filtros-lista.expandido {
+    max-height: 31.25rem;
+}
+
+.filtro-toggle {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none; /* Quitar fondo blanco */
+    border: none; /* Quitar borde */
+    border-radius: 0; /* Quitar radio */
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.filtro-toggle:hover {
+    transform: scale(1.1); /* Efecto hover sutil */
+}
+
+.filtro-toggle-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease-in-out; /* Transición suave */
+    pointer-events: none;
+}
+
+.filtro-toggle-img.rotada-izquierda {
+    transform: rotate(-287deg); /* Gira 90° en sentido antihorario */
 }
 
 .filtro-btn {
-    background: #e8eef2;
-    border: none;
-    border-radius: 1.25rem; /* 20px */
-    padding: 0.5rem 1rem; /* 8px 16px */
-    font-size: 0.875rem; /* 14px */
-    color: #555;
-    cursor: pointer;
-    transition: all 0.2s;
-    -webkit-tap-highlight-color: transparent;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.875rem;
+    border: 2px solid #000;
+    border-radius: 1.25rem;
     white-space: nowrap;
+    color: #000;
+    background: var(--secondary-pink);
+    -webkit-tap-highlight-color: transparent;
+    font-family: "Lucida Blackletter Regular", "UnquietSpirits", sans-serif;
+    transition: all 0.2s;
+    cursor: pointer;
 }
 
 .filtro-btn:hover {
-    background: #d0dde5;
+    background: var(--primary-pink);
+    border-color: #333;
 }
 
 .filtro-btn.activo {
-    background: #2f5a62;
-    color: white;
+    background: var(--text-dark);
+    color: var(--secondary-pink);
     font-weight: 600;
+    border-color: var(--secondary-pink);
 }
 
 /* Catálogo */
 .catalogo {
     flex: 1;
-    padding: 0 0.75rem; /* 12px */
+    padding: 0 0.75rem;
 }
 
 .grid-cartas {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(4.6875rem, 1fr)); /* 75px */
-    gap: 0.5rem; /* 8px */
-    padding: 0.25rem 0 0.75rem; /* 4px 0 12px */
+    grid-template-columns: repeat(auto-fill, minmax(4.6875rem, 1fr));
+    gap: 0.5rem;
+    padding: 0rem 0 0.75rem;
 }
 
 /* Títulos de sección dentro del grid */
@@ -274,26 +437,28 @@ body {
     grid-column: 1 / -1;
     text-align: left;
     margin: 0;
-    color: #2f5a62;
+    color: var(--secondary-pink);
+    font-family: "terror", "Lucida Blackletter Regular", sans-serif;
+    -webkit-text-stroke: 1px black;
+    line-height: 1;
 }
 
 .categoria-titulo {
-    font-size: 1.375rem; /* 22px */
+    font-size: 1.375rem;
     font-weight: 700;
 }
 
 .categoria-titulo.primer-menor {
-    margin-top: 2rem; /* Se mantiene en rem porque ya era relativo */
+    margin-top: 2rem;
 }
 
 .palo-titulo {
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem;
     font-weight: 600;
-    color: #555;
-    margin-top: 1.5rem; /* Margen superior para cada palo */
+    color: var(--primary-pink);
+    margin-top: 1.5rem;
 }
 
-/* El primer palo (Bastos) no debe tener margen superior */
 .palo-titulo.primer-palo {
     margin-top: 0;
 }
@@ -301,11 +466,11 @@ body {
 /* Carta individual */
 .carta {
     cursor: pointer;
-    border-radius: 0.375rem; /* 6px */
+    border-radius: 0.375rem;
     overflow: hidden;
     background: white;
-    border: 0.09375rem solid #e0e0e0; /* 1.5px */
-    box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.05); /* 1px 2px */
+    border: 0.09375rem solid #e0e0e0;
+    box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.05);
     transition:
         transform 0.15s ease,
         box-shadow 0.15s ease;
@@ -315,19 +480,19 @@ body {
 }
 
 .carta:hover {
-    transform: translateY(-0.125rem); /* 2px */
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* 4px 8px */
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
     border-color: #2f5a62;
 }
 
 .carta:active {
     transform: scale(0.97);
-    box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.05); /* 1px 2px */
+    box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.05);
 }
 
 .carta:focus-visible {
-    outline: 0.125rem solid #2f5a62; /* 2px */
-    outline-offset: 0.125rem; /* 2px */
+    outline: 0.125rem solid #2f5a62;
+    outline-offset: 0.125rem;
 }
 
 /* Colores de borde y franja superior según categoría */
@@ -350,8 +515,8 @@ body {
 .carta::before {
     content: "";
     display: block;
-    height: 0.25rem; /* 4px */
-    border-radius: 0.25rem 0.25rem 0 0; /* 4px 4px 0 0 */
+    height: 0.25rem;
+    border-radius: 0.25rem 0.25rem 0 0;
 }
 
 .carta-mayor::before {
@@ -384,19 +549,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem; /* 16px */
-    padding: 1.25rem; /* 20px */
+    gap: 1rem;
+    padding: 1.25rem;
     flex-wrap: wrap;
 }
 
 .pag-btn {
     background: none;
     border: none;
-    font-size: 1.25rem; /* 20px */
+    font-size: 1.25rem;
     cursor: pointer;
     color: #2f5a62;
-    padding: 0.5rem 0.75rem; /* 8px 12px */
-    border-radius: 0.375rem; /* 6px */
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
     transition: background 0.2s ease;
     -webkit-tap-highlight-color: transparent;
 }
@@ -413,11 +578,11 @@ body {
 .pag-num {
     background: none;
     border: none;
-    font-size: 1rem; /* 16px */
+    font-size: 1rem;
     cursor: pointer;
     color: #888;
-    padding: 0.5rem 0.75rem; /* 8px 12px */
-    border-radius: 0.375rem; /* 6px */
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
     transition: all 0.2s ease;
     -webkit-tap-highlight-color: transparent;
 }
@@ -434,80 +599,352 @@ body {
 /* Sin resultados */
 .sin-resultados {
     text-align: center;
-    padding: 3.75rem 1.25rem; /* 60px 20px */
+    padding: 3.75rem 1.25rem;
     color: #888;
-    font-size: 1rem; /* 16px */
+    font-size: 1rem;
 }
 
-/* Responsive */
-@media (min-width: 37.5rem) {
-    /* 600px */
+/* ========================================
+   MEDIA QUERIES - DE MAYOR A MENOR
+   ======================================== */
+
+/* Monitores muy grandes: 112.5rem = 1800px */
+@media (min-width: 112.5rem) {
+    .header {
+        min-height: 5rem;
+        padding: 0.75rem 0;
+    }
+
+    .header h1 {
+        font-size: 4.5rem;
+    }
+
     .grid-cartas {
-        grid-template-columns: repeat(7, 1fr);
-        gap: 0.625rem; /* 10px */
+        grid-template-columns: repeat(13, 1fr);
+        gap: 1rem;
+        max-width: 100rem;
+        margin: 0 auto;
     }
 
     .carta {
-        border-radius: 0.5rem; /* 8px */
-    }
-}
-
-@media (min-width: 56.25rem) {
-    /* 900px */
-    .grid-cartas {
-        grid-template-columns: repeat(7, 1fr);
-        gap: 0.75rem; /* 12px */
-        max-width: 56.25rem; /* 900px */
-        margin: 0 auto;
+        border-radius: 0.75rem;
     }
 
     .searchbar-container {
-        max-width: 37.5rem; /* 600px */
+        max-width: 50rem;
         margin: 0 auto;
         width: 100%;
+    }
+
+    .searchbar {
+        height: 3.5rem;
+        font-size: 1.25rem;
+    }
+
+    .filtros-contenedor {
+        max-width: 100rem;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .filtro-btn {
+        font-size: 1.125rem;
+        padding: 0.5rem 1.25rem;
+    }
+
+    /* Ocultar toggle en monitores grandes */
+    .filtro-toggle {
+        display: none;
+    }
+
+    .filtros-lista,
+    .filtros-lista.colapsado,
+    .filtros-lista.expandido {
+        max-height: none;
+        overflow: visible;
     }
 }
 
 /* Monitores grandes: 87.5rem = 1400px */
-@media (min-width: 87.5rem) {
+@media (min-width: 87.5rem) and (max-width: 112.4375rem) {
+    .header {
+        min-height: 4.5rem;
+        padding: 0.625rem 0;
+    }
+
+    .header h1 {
+        font-size: 3.5rem;
+    }
+
     .grid-cartas {
         grid-template-columns: repeat(10, 1fr);
-        gap: 0.875rem; /* 14px */
-        max-width: 75rem; /* 1200px */
+        gap: 0.875rem;
+        max-width: 75rem;
+        margin: 0 auto;
     }
 
     .carta {
-        border-radius: 0.625rem; /* 10px */
+        border-radius: 0.625rem;
     }
 
     .searchbar-container {
-        max-width: 43.75rem; /* 700px */
+        max-width: 43.75rem;
+        margin: 0 auto;
+        width: 100%;
     }
 
-    .filtros-categoria {
-        max-width: 75rem; /* 1200px */
+    .searchbar {
+        height: 3rem;
+        font-size: 1.125rem;
+    }
+
+    .filtros-contenedor {
+        max-width: 75rem;
         margin: 0 auto;
+        width: 100%;
+    }
+
+    .filtro-btn {
+        font-size: 1rem;
+        padding: 0.375rem 1rem;
+    }
+
+    /* Ocultar toggle también aquí */
+    .filtro-toggle {
+        display: none;
+    }
+
+    .filtros-lista,
+    .filtros-lista.colapsado,
+    .filtros-lista.expandido {
+        max-height: none;
+        overflow: visible;
     }
 }
 
-/* Monitores muy grandes: 112.5rem = 1800px */
-@media (min-width: 112.5rem) {
-    .grid-cartas {
-        grid-template-columns: repeat(13, 1fr);
-        gap: 1rem; /* 16px */
-        max-width: 100rem; /* 1600px */
+/* Pantallas medianas-grandes: 56.25rem = 900px */
+@media (min-width: 56.25rem) and (max-width: 87.4375rem) {
+    .filtro-toggle {
+        display: none;
     }
 
-    .carta {
-        border-radius: 0.75rem; /* 12px */
+    .filtros-lista,
+    .filtros-lista.colapsado,
+    .filtros-lista.expandido {
+        max-height: none;
+        overflow: visible;
+    }
+
+    .filtros-contenedor {
+        justify-content: center;
+    }
+
+    .header h1 {
+        font-size: 2.5rem;
+    }
+
+    .header {
+        min-height: 3.5rem;
+        padding: 0.5rem 0;
+    }
+
+    .grid-cartas {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0.75rem;
+        max-width: 56.25rem;
+        margin: 0 auto;
     }
 
     .searchbar-container {
-        max-width: 50rem; /* 800px */
+        max-width: 37.5rem;
+        margin: 0 auto;
+        width: 100%;
     }
 
-    .filtros-categoria {
-        max-width: 100rem; /* 1600px */
+    .filtro-btn {
+        font-size: 0.875rem;
+    }
+}
+
+/* Pantallas pequeñas-medianas: 37.5rem = 600px */
+@media (min-width: 37.5rem) and (max-width: 56.1875rem) {
+    .header {
+        min-height: 3rem;
+        padding: 0.375rem 0;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .grid-cartas {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0.625rem;
+    }
+
+    .carta {
+        border-radius: 0.5rem;
+    }
+
+    .searchbar-container {
+        padding: 0.625rem;
+    }
+
+    .searchbar {
+        height: 2.75rem;
+    }
+
+    .filtro-btn {
+        font-size: 0.8125rem;
+        padding: 0.25rem 0.75rem;
+    }
+
+    /* Ajuste colapsado */
+    .filtros-lista.colapsado {
+        max-height: 1.6rem;
+    }
+}
+
+/* Pantallas pequeñas: menos de 37.5rem = 600px */
+@media (max-width: 37.4375rem) {
+    .header {
+        min-height: 4.7rem;
+        padding: 0rem 0 0.375rem;
+    }
+
+    .header h1 {
+        font-size: 3rem; /* Ligeramente más grande para legibilidad */
+        -webkit-text-stroke: 0.5px black;
+    }
+
+    .searchbar-container {
+        padding: 0.5rem;
+    }
+
+    .searchbar {
+        height: 2.3rem;
+        font-size: 1rem;
+        padding-left: 2.8rem;
+    }
+
+    .search-icon {
+        left: 0.9rem;
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .searchbar::placeholder {
+        font-size: 1.25rem; /* Tamaño más grande para móvil */
+        line-height: 1.2; /* Evita que se corte verticalmente */
+    }
+
+    .filtros-contenedor {
+        padding: 0 0.5rem 0.5rem;
+        gap: 0.375rem;
+    }
+
+    .filtros-lista {
+        gap: 0.375rem;
+    }
+
+    .filtros-lista.colapsado {
+        max-height: 1.5rem; /* Ajuste para evitar que se asome */
+    }
+
+    .filtro-btn {
+        font-size: 0.75rem;
+        padding: 0.15rem 0.5rem;
+        border-width: 1.5px;
+    }
+
+    .filtro-toggle {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.125rem;
+    }
+
+    .categoria-titulo,
+    .palo-titulo {
+        margin-top: 1rem;
+        font-size: 2rem;
+        font-weight: 400;
+    }
+    .grid-cartas {
+        grid-template-columns: repeat(auto-fill, minmax(3.75rem, 1fr));
+        gap: 0.375rem;
+    }
+}
+
+/* ========================================
+   QUERYS ESPECIALES - LANDSCAPE Y OTROS
+   ======================================== */
+
+/* Orientación landscape en móviles */
+@media (max-height: 37.5rem) and (orientation: landscape) {
+    .header {
+        min-height: 2.5rem;
+        padding: 0.25rem 0;
+    }
+
+    .header h1 {
+        font-size: 1.25rem;
+    }
+
+    .searchbar-container {
+        padding: 0.375rem;
+    }
+
+    .searchbar {
+        height: 2rem;
+        font-size: 0.8125rem;
+    }
+
+    .filtros-contenedor {
+        padding: 0 0.375rem 0.375rem;
+    }
+
+    .filtros-lista.colapsado {
+        max-height: 1.4rem;
+    }
+
+    .filtro-btn {
+        font-size: 0.6875rem;
+        padding: 0.125rem 0.375rem;
+    }
+
+    .grid-cartas {
+        grid-template-columns: repeat(auto-fill, minmax(3.125rem, 1fr));
+        gap: 0.25rem;
+    }
+}
+
+/* Dispositivos de alta densidad (Retina) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .carta-imagen,
+    .detalle-imagen {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Pantallas muy pequeñas (menos de 320px) */
+@media (max-width: 20rem) {
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .filtro-btn {
+        font-size: 0.6875rem;
+        padding: 0.1rem 0.375rem;
+    }
+
+    .filtros-lista.colapsado {
+        max-height: 1.3rem;
+    }
+
+    .grid-cartas {
+        grid-template-columns: repeat(auto-fill, minmax(3.125rem, 1fr));
+        gap: 0.25rem;
     }
 }
 
@@ -515,7 +952,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .carta,
     .header-back,
-    .filtro-btn {
+    .filtro-btn,
+    .filtros-lista {
         transition: none;
     }
 
