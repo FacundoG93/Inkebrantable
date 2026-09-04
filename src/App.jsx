@@ -7,13 +7,13 @@ import React, {
 } from "react";
 import cardsData from "./assets/cards.json";
 
-const PAGE_SIZE = 35;
+const PAGE_SIZE = 36; // Cambiado de 35 a 36
 const TOTAL_COLS = 13;
 const TOTAL_ROWS = 6;
 const COLS_PERCENT = 100 / (TOTAL_COLS - 1);
 const ROWS_PERCENT = 100 / (TOTAL_ROWS - 1);
 
-// Componente Carta memoizado (sin cambios)
+// Componente Carta memoizado
 const Carta = memo(function Carta({ carta, onClick }) {
     const bgPosition = `${carta.col * COLS_PERCENT}% ${carta.row * ROWS_PERCENT}%`;
 
@@ -77,17 +77,18 @@ export default function App() {
     const [pagina, setPagina] = useState(1);
     const [categoria, setCategoria] = useState("todos");
     const [cartaId, setCartaId] = useState(null);
-    const [filtrosExpandidos, setFiltrosExpandidos] = useState(false); // Nuevo estado
+    const [filtrosExpandidos, setFiltrosExpandidos] = useState(false);
 
-    // Sincronizar con hash de URL (sin cambios)
     useEffect(() => {
         const handleHashChange = () => {
             const hash = window.location.hash;
             if (hash.startsWith("#/carta/")) {
                 const id = hash.replace("#/carta/", "");
                 setCartaId(id);
+                window.scrollTo(0, 0);
             } else {
                 setCartaId(null);
+                window.scrollTo(0, 0);
             }
         };
         window.addEventListener("hashchange", handleHashChange);
@@ -98,11 +99,13 @@ export default function App() {
     const irADetalle = (id) => {
         window.location.hash = `#/carta/${id}`;
         setCartaId(id);
+        window.scrollTo(0, 0);
     };
 
     const volverALista = () => {
         window.location.hash = "";
         setCartaId(null);
+        window.scrollTo(0, 0);
     };
 
     const deferredQuery = useDeferredValue(query);
@@ -159,11 +162,18 @@ export default function App() {
     const handleBusqueda = (e) => {
         setQuery(e.target.value);
         setPagina(1);
+        window.scrollTo(0, 0);
     };
 
     const handleCategoria = (cat) => {
         setCategoria(cat);
         setPagina(1);
+        window.scrollTo(0, 0);
+    };
+
+    const handlePagina = (num) => {
+        setPagina(num);
+        window.scrollTo(0, 0);
     };
 
     const numerosPagina = useMemo(() => {
@@ -181,7 +191,7 @@ export default function App() {
         return paginas;
     }, [paginaActual, totalPaginas]);
 
-    // Vista detalle (sin cambios)
+    // Vista detalle
     if (cartaId) {
         const carta = getCartaById(cartaId);
         if (!carta) {
@@ -429,18 +439,24 @@ export default function App() {
                 <footer className="paginacion">
                     <button
                         className="pag-btn"
-                        onClick={() => setPagina((p) => Math.max(1, p - 1))}
+                        onClick={() =>
+                            handlePagina(Math.max(1, paginaActual - 1))
+                        }
                         disabled={paginaActual === 1}
                         aria-label="Página anterior"
                     >
-                        ←
+                        <img
+                            src="/decoraciones/silver-arrow.png"
+                            alt="Anterior"
+                            className="pag-arrow left"
+                        />
                     </button>
 
                     {numerosPagina.map((num) => (
                         <button
                             key={num}
                             className={`pag-num ${num === paginaActual ? "activo" : ""}`}
-                            onClick={() => setPagina(num)}
+                            onClick={() => handlePagina(num)}
                         >
                             {num}
                         </button>
@@ -449,12 +465,18 @@ export default function App() {
                     <button
                         className="pag-btn"
                         onClick={() =>
-                            setPagina((p) => Math.min(totalPaginas, p + 1))
+                            handlePagina(
+                                Math.min(totalPaginas, paginaActual + 1),
+                            )
                         }
                         disabled={paginaActual === totalPaginas}
                         aria-label="Página siguiente"
                     >
-                        →
+                        <img
+                            src="/decoraciones/silver-arrow.png"
+                            alt="Siguiente"
+                            className="pag-arrow right"
+                        />
                     </button>
                 </footer>
             )}

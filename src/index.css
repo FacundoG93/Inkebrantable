@@ -1,3 +1,4 @@
+/* ===== FUENTES ===== */
 @font-face {
     font-family: "Lucida Blackletter Regular";
     font-style: normal;
@@ -17,7 +18,7 @@
 }
 
 @font-face {
-    font-family: "GhastlyPanic"; /* Nombre que usarás */
+    font-family: "GhastlyPanic";
     src: url("/fonts/Ghastly Panic.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
@@ -25,38 +26,46 @@
 }
 
 @font-face {
-    font-family: "gothical"; /* Nombre que usarás */
-    src: url("/public/fonts/Gothical.ttf") format("truetype");
+    font-family: "gothical";
+    src: url("/fonts/Gothical.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: "raven"; /* Nombre que usarás */
-    src: url("/public/fonts/Raven\ Song.ttf") format("truetype");
+    font-family: "raven";
+    src: url("/fonts/Raven Song.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Sanctuary"; /* Nombre que usarás */
-    src: url("/public/fonts/Sanctuary.ttf") format("truetype");
+    font-family: "Sanctuary";
+    src: url("/fonts/Sanctuary.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: "terror"; /* Nombre que usarás */
-    src: url("/public/fonts/Terrorplate.ttf") format("truetype");
+    font-family: "terror";
+    src: url("/fonts/Terrorplate.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
-/* ===== Variables de color ===== */
+@font-face {
+    font-family: "aiden";
+    src: url("/fonts/aiden.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ===== Variables ===== */
 :root {
     --primary-pink: #dc2d95;
     --primary-grey: #e5e5e7;
@@ -69,7 +78,7 @@
     --white: #ffffff;
 }
 
-/* Reset y base */
+/* ===== Reset y base ===== */
 * {
     margin: 0;
     padding: 0;
@@ -81,51 +90,75 @@ html {
 }
 
 body {
-    background-color: #faf9f6; /* Color de respaldo mientras carga la imagen */
+    background-color: #faf9f6;
     background-image: url("/backgrounds/full-brickwall.png");
-    background-repeat: repeat; /* Repite en ambas direcciones (por defecto) */
-    background-size: 70rem auto; /* Ajusta el ancho a 200px, manteniendo proporción */
+    background-repeat: repeat;
+    background-size: 70rem auto;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+        Arial, sans-serif;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+    /* Para el difuminado */
+    position: relative;
+}
+
+/* Difuminado negro al final, detrás del contenido */
+body::after {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    pointer-events: none;
+    z-index: 0;
 }
 
 #root {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    position: relative;
+    z-index: 1; /* Asegura que el contenido esté por encima del difuminado */
 }
 
 .app {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    position: relative;
+    z-index: 1;
 }
 
 /* ===== HEADER ===== */
 .header {
     position: sticky;
     top: 0;
-    min-height: 3.5rem;
+    min-height: 4.7rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem 0;
+    padding: 0 0 0.375rem;
     box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1);
     z-index: 100;
-
-    /* Fondo con imagen */
-    background-color: #161515; /* Color de respaldo mientras carga la imagen */
+    background-color: #161515;
     background-image: url("/backgrounds/Textura2.jpg");
-    background-size: cover; /* Ajusta la imagen para cubrir todo el header */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que se repita */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .header h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 400;
     letter-spacing: 0.03125rem;
     color: var(--primary-pink);
     font-family: "UnquietSpirits", "Lucida Blackletter Regular", sans-serif;
-    -webkit-text-stroke: 1px black;
+    -webkit-text-stroke: 0.5px black;
     line-height: 1;
     transition: font-size 0.3s ease;
 }
@@ -150,7 +183,7 @@ body {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Vista detalle */
+/* ===== VISTA DETALLE ===== */
 .detalle-container {
     flex: 1;
     display: flex;
@@ -250,27 +283,26 @@ body {
     color: #333;
 }
 
-/* Imagen de manchas de pintura */
+/* ===== IMAGEN DE MANCHAS ===== */
 .paint-splatter {
     display: block;
     width: 100%;
     height: auto;
-    /* Puedes ajustar con margin negativo si quieres que se superponga un poco al header */
     margin-top: -0.2rem;
 }
 
-/* Barra de búsqueda */
+/* ===== BARRA DE BÚSQUEDA ===== */
 .searchbar-container {
     position: relative;
-    margin-top: 1rem; /* Antes era 20%, ahora el espacio lo da la imagen */
-    padding: 0;
+    padding: 0.5rem;
+    margin: 0;
 }
 
 .search-icon {
     position: absolute;
     top: 50%;
-    left: 1rem;
-    width: 2rem; /* Tamaño base */
+    left: 0.9rem;
+    width: 2rem;
     height: 2rem;
     color: var(--text-dark);
     transform: translateY(-50%);
@@ -278,18 +310,18 @@ body {
 }
 
 .star-icon {
-    transform: translateY(-50%) rotate(-25deg); /* Inclinación */
+    transform: translateY(-50%) rotate(-25deg);
 }
 
 .searchbar {
-    padding-left: 2.5rem;
+    padding-left: 2.8rem;
     padding-right: 1rem;
     width: 100%;
-    height: 3rem;
+    height: 2.3rem;
     border: 2px dashed #000;
     border-radius: 10rem;
     outline: none;
-    font-size: 2rem;
+    font-size: 1rem;
     appearance: none;
     -webkit-appearance: none;
     background: linear-gradient(
@@ -306,7 +338,8 @@ body {
 
 .searchbar::placeholder {
     color: var(--text-dark);
-    font-size: 0.9375rem;
+    font-size: 1.25rem;
+    line-height: 1.2;
 }
 
 .searchbar:focus {
@@ -321,7 +354,7 @@ body {
 }
 
 .searchbar-container:focus-within .search-icon {
-    color: var(--primary-pink); /* Mismo rosa que el texto y placeholder */
+    color: var(--primary-pink);
 }
 
 .searchbar::-webkit-search-decoration,
@@ -331,13 +364,13 @@ body {
     -webkit-appearance: none;
 }
 
-/* ===== FILTROS POR CATEGORÍA CON TOGGLE ===== */
+/* ===== FILTROS ===== */
 .filtros-contenedor {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: 0 0.75rem 0.75rem;
-    gap: 0.5rem;
+    padding: 0 0.5rem 0.5rem;
+    gap: 0.375rem;
 }
 
 .filtros-lista {
@@ -345,15 +378,15 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     flex: 1;
-    margin-top: 0.8rem;
+    margin-top: 0.5rem;
     min-width: 0;
-    gap: 0.5rem;
+    gap: 0.375rem;
     overflow: hidden;
     transition: max-height 0.3s ease-in-out;
 }
 
 .filtros-lista.colapsado {
-    max-height: 1.75rem; /* Ajustado para evitar que se asome la segunda fila */
+    max-height: 2.6rem;
 }
 
 .filtros-lista.expandido {
@@ -361,41 +394,42 @@ body {
 }
 
 .filtro-toggle {
-    flex-shrink: 0;
-    width: 3rem;
-    height: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: none; /* Quitar fondo blanco */
-    border: none; /* Quitar borde */
-    border-radius: 0; /* Quitar radio */
-    cursor: pointer;
+    flex-shrink: 0;
     padding: 0;
-    transition: transform 0.2s;
+    width: 3.8rem;
+    height: 3.8rem;
+    border: none;
+    border-radius: 0;
+    background: none;
     -webkit-tap-highlight-color: transparent;
+    transition: transform 0.2s;
+    cursor: pointer;
 }
 
 .filtro-toggle:hover {
-    transform: scale(1.1); /* Efecto hover sutil */
+    transform: scale(1.1);
 }
 
 .filtro-toggle-img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: transform 0.3s ease-in-out; /* Transición suave */
+    transition: transform 0.3s ease-in-out;
     pointer-events: none;
 }
 
 .filtro-toggle-img.rotada-izquierda {
-    transform: rotate(-287deg); /* Gira 90° en sentido antihorario */
+    transform: rotate(-287deg);
 }
 
 .filtro-btn {
-    padding: 0.2rem 0.5rem;
-    font-size: 0.875rem;
-    border: 2px solid #000;
+    margin-top: 0.5rem;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.95rem;
+    border: 1.5px solid #000;
     border-radius: 1.25rem;
     white-space: nowrap;
     color: #000;
@@ -418,33 +452,33 @@ body {
     border-color: var(--secondary-pink);
 }
 
-/* Catálogo */
+/* ===== CATÁLOGO ===== */
 .catalogo {
     flex: 1;
     padding: 0 0.75rem;
 }
 
+/* Mobile: 4 cartas por fila */
 .grid-cartas {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(4.6875rem, 1fr));
-    gap: 0.5rem;
-    padding: 0rem 0 0.75rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.375rem;
+    padding: 0 0 0.75rem;
 }
 
-/* Títulos de sección dentro del grid */
 .categoria-titulo,
 .palo-titulo {
     grid-column: 1 / -1;
     text-align: left;
     margin: 0;
     color: var(--secondary-pink);
-    font-family: "terror", "Lucida Blackletter Regular", sans-serif;
+    font-family: "Lucida Blackletter Regular", sans-serif;
     -webkit-text-stroke: 1px black;
     line-height: 1;
 }
 
 .categoria-titulo {
-    font-size: 1.375rem;
+    font-size: 1.75rem;
     font-weight: 700;
 }
 
@@ -453,7 +487,7 @@ body {
 }
 
 .palo-titulo {
-    font-size: 1.125rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: var(--primary-pink);
     margin-top: 1.5rem;
@@ -463,7 +497,6 @@ body {
     margin-top: 0;
 }
 
-/* Carta individual */
 .carta {
     cursor: pointer;
     border-radius: 0.375rem;
@@ -495,7 +528,6 @@ body {
     outline-offset: 0.125rem;
 }
 
-/* Colores de borde y franja superior según categoría */
 .carta-mayor {
     border-color: #8c45ff;
 }
@@ -544,230 +576,109 @@ body {
     background-position: 0% 0%;
 }
 
-/* Paginación */
+/* ===== PAGINACIÓN ===== */
 .paginacion {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
     padding: 1.25rem;
-    flex-wrap: wrap;
 }
 
 .pag-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: none;
     border: none;
-    font-size: 1.25rem;
-    cursor: pointer;
-    color: #2f5a62;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.375rem;
-    transition: background 0.2s ease;
+    outline: none;
+    box-shadow: none;
     -webkit-tap-highlight-color: transparent;
+    transition:
+        background 0.2s ease,
+        opacity 0.2s ease;
+    cursor: pointer;
+    padding: 0;
 }
 
-.pag-btn:hover:not(:disabled) {
-    background: #e8eef2;
+.pag-arrow {
+    width: 4rem;
+    height: auto;
+    display: block;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    filter: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.pag-arrow.left {
+    transform: rotate(0deg);
+}
+
+.pag-arrow.right {
+    transform: rotate(180deg);
+}
+
+.pag-btn:hover:not(:disabled) .pag-arrow {
+    opacity: 0.8;
 }
 
 .pag-btn:disabled {
-    color: #ccc;
     cursor: not-allowed;
 }
 
+.pag-btn:disabled .pag-arrow {
+    opacity: 0.4;
+}
+
 .pag-num {
-    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 0.4rem 0.434rem 0rem 0rem;
     border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    color: #888;
-    padding: 0.5rem 0.75rem;
     border-radius: 0.375rem;
-    transition: all 0.2s ease;
+    font-size: 2rem;
+    color: var(--white);
+    font-family: "aiden", sans-serif;
+    background-color: transparent;
+    background-image: url("/decoraciones/pag-no-seleccionada.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     -webkit-tap-highlight-color: transparent;
+    transition: all 0.2s ease;
+    cursor: pointer;
 }
 
 .pag-num:hover {
-    background: #e8eef2;
+    filter: brightness(1.1);
 }
 
 .pag-num.activo {
-    color: #2f5a62;
-    font-weight: bold;
+    background-image: url("/decoraciones/pag-seleccionada.png");
 }
 
-/* Sin resultados */
 .sin-resultados {
     text-align: center;
     padding: 3.75rem 1.25rem;
-    color: #888;
     font-size: 1rem;
+    color: #888;
 }
 
-/* ========================================
-   MEDIA QUERIES - DE MAYOR A MENOR
-   ======================================== */
+/* ============================================
+   MEDIA QUERIES (de menor a mayor)
+   ============================================ */
 
-/* Monitores muy grandes: 112.5rem = 1800px */
-@media (min-width: 112.5rem) {
-    .header {
-        min-height: 5rem;
-        padding: 0.75rem 0;
-    }
-
-    .header h1 {
-        font-size: 4.5rem;
-    }
-
-    .grid-cartas {
-        grid-template-columns: repeat(13, 1fr);
-        gap: 1rem;
-        max-width: 100rem;
-        margin: 0 auto;
-    }
-
-    .carta {
-        border-radius: 0.75rem;
-    }
-
-    .searchbar-container {
-        max-width: 50rem;
-        margin: 0 auto;
-        width: 100%;
-    }
-
-    .searchbar {
-        height: 3.5rem;
-        font-size: 1.25rem;
-    }
-
-    .filtros-contenedor {
-        max-width: 100rem;
-        margin: 0 auto;
-        width: 100%;
-    }
-
-    .filtro-btn {
-        font-size: 1.125rem;
-        padding: 0.5rem 1.25rem;
-    }
-
-    /* Ocultar toggle en monitores grandes */
-    .filtro-toggle {
-        display: none;
-    }
-
-    .filtros-lista,
-    .filtros-lista.colapsado,
-    .filtros-lista.expandido {
-        max-height: none;
-        overflow: visible;
-    }
-}
-
-/* Monitores grandes: 87.5rem = 1400px */
-@media (min-width: 87.5rem) and (max-width: 112.4375rem) {
-    .header {
-        min-height: 4.5rem;
-        padding: 0.625rem 0;
-    }
-
-    .header h1 {
-        font-size: 3.5rem;
-    }
-
-    .grid-cartas {
-        grid-template-columns: repeat(10, 1fr);
-        gap: 0.875rem;
-        max-width: 75rem;
-        margin: 0 auto;
-    }
-
-    .carta {
-        border-radius: 0.625rem;
-    }
-
-    .searchbar-container {
-        max-width: 43.75rem;
-        margin: 0 auto;
-        width: 100%;
-    }
-
-    .searchbar {
-        height: 3rem;
-        font-size: 1.125rem;
-    }
-
-    .filtros-contenedor {
-        max-width: 75rem;
-        margin: 0 auto;
-        width: 100%;
-    }
-
-    .filtro-btn {
-        font-size: 1rem;
-        padding: 0.375rem 1rem;
-    }
-
-    /* Ocultar toggle también aquí */
-    .filtro-toggle {
-        display: none;
-    }
-
-    .filtros-lista,
-    .filtros-lista.colapsado,
-    .filtros-lista.expandido {
-        max-height: none;
-        overflow: visible;
-    }
-}
-
-/* Pantallas medianas-grandes: 56.25rem = 900px */
-@media (min-width: 56.25rem) and (max-width: 87.4375rem) {
-    .filtro-toggle {
-        display: none;
-    }
-
-    .filtros-lista,
-    .filtros-lista.colapsado,
-    .filtros-lista.expandido {
-        max-height: none;
-        overflow: visible;
-    }
-
-    .filtros-contenedor {
-        justify-content: center;
-    }
-
-    .header h1 {
-        font-size: 2.5rem;
-    }
-
-    .header {
-        min-height: 3.5rem;
-        padding: 0.5rem 0;
-    }
-
-    .grid-cartas {
-        grid-template-columns: repeat(7, 1fr);
-        gap: 0.75rem;
-        max-width: 56.25rem;
-        margin: 0 auto;
-    }
-
-    .searchbar-container {
-        max-width: 37.5rem;
-        margin: 0 auto;
-        width: 100%;
-    }
-
-    .filtro-btn {
-        font-size: 0.875rem;
-    }
-}
-
-/* Pantallas pequeñas-medianas: 37.5rem = 600px */
-@media (min-width: 37.5rem) and (max-width: 56.1875rem) {
+/* ≥ 600px */
+@media (min-width: 37.5rem) {
     .header {
         min-height: 3rem;
         padding: 0.375rem 0;
@@ -775,6 +686,31 @@ body {
 
     .header h1 {
         font-size: 2rem;
+        -webkit-text-stroke: 1px black;
+    }
+
+    .searchbar-container {
+        padding: 0.625rem;
+    }
+
+    .searchbar {
+        height: 2.75rem;
+        font-size: 1.25rem;
+    }
+
+    .search-icon {
+        left: 1.2rem;
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+
+    .filtro-btn {
+        font-size: 0.8125rem;
+        padding: 0.25rem 0.75rem;
+    }
+
+    .filtros-lista.colapsado {
+        max-height: 1.6rem;
     }
 
     .grid-cartas {
@@ -786,100 +722,179 @@ body {
         border-radius: 0.5rem;
     }
 
-    .searchbar-container {
-        padding: 0.625rem;
+    .paginacion {
+        padding: 1rem;
+        gap: 0.75rem;
     }
 
-    .searchbar {
-        height: 2.75rem;
-    }
-
-    .filtro-btn {
-        font-size: 0.8125rem;
-        padding: 0.25rem 0.75rem;
-    }
-
-    /* Ajuste colapsado */
-    .filtros-lista.colapsado {
-        max-height: 1.6rem;
+    .pag-num {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.5rem;
     }
 }
 
-/* Pantallas pequeñas: menos de 37.5rem = 600px */
-@media (max-width: 37.4375rem) {
+/* ≥ 900px */
+@media (min-width: 56.25rem) {
     .header {
-        min-height: 4.7rem;
-        padding: 0rem 0 0.375rem;
+        min-height: 3.5rem;
+        padding: 0.5rem 0;
     }
 
     .header h1 {
-        font-size: 3rem; /* Ligeramente más grande para legibilidad */
-        -webkit-text-stroke: 0.5px black;
+        font-size: 2.5rem;
     }
 
     .searchbar-container {
-        padding: 0.5rem;
-    }
-
-    .searchbar {
-        height: 2.3rem;
-        font-size: 1rem;
-        padding-left: 2.8rem;
-    }
-
-    .search-icon {
-        left: 0.9rem;
-        width: 2rem;
-        height: 2rem;
-    }
-
-    .searchbar::placeholder {
-        font-size: 1.25rem; /* Tamaño más grande para móvil */
-        line-height: 1.2; /* Evita que se corte verticalmente */
+        max-width: 37.5rem;
+        margin: 0 auto;
+        width: 100%;
     }
 
     .filtros-contenedor {
-        padding: 0 0.5rem 0.5rem;
-        gap: 0.375rem;
-    }
-
-    .filtros-lista {
-        gap: 0.375rem;
-    }
-
-    .filtros-lista.colapsado {
-        max-height: 1.5rem; /* Ajuste para evitar que se asome */
-    }
-
-    .filtro-btn {
-        font-size: 0.75rem;
-        padding: 0.15rem 0.5rem;
-        border-width: 1.5px;
+        max-width: 56.25rem;
+        margin: 0 auto;
+        width: 100%;
     }
 
     .filtro-toggle {
-        width: 3rem;
-        height: 3rem;
-        font-size: 1.125rem;
+        display: none;
     }
 
-    .categoria-titulo,
-    .palo-titulo {
-        margin-top: 1rem;
-        font-size: 2rem;
-        font-weight: 400;
+    .filtros-lista,
+    .filtros-lista.colapsado,
+    .filtros-lista.expandido {
+        max-height: none;
+        overflow: visible;
     }
+
     .grid-cartas {
-        grid-template-columns: repeat(auto-fill, minmax(3.75rem, 1fr));
-        gap: 0.375rem;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0.75rem;
+        max-width: 56.25rem;
+        margin: 0 auto;
+    }
+
+    .categoria-titulo {
+        font-size: 1.5rem;
+    }
+
+    .palo-titulo {
+        font-size: 1.25rem;
     }
 }
 
-/* ========================================
-   QUERYS ESPECIALES - LANDSCAPE Y OTROS
-   ======================================== */
+/* ≥ 1400px */
+@media (min-width: 87.5rem) {
+    .header {
+        min-height: 4.5rem;
+        padding: 0.625rem 0;
+    }
 
-/* Orientación landscape en móviles */
+    .header h1 {
+        font-size: 3.5rem;
+    }
+
+    .searchbar-container {
+        max-width: 43.75rem;
+    }
+
+    .searchbar {
+        height: 3rem;
+        font-size: 1.375rem;
+    }
+
+    .filtros-contenedor {
+        max-width: 75rem;
+    }
+
+    .filtro-btn {
+        font-size: 1rem;
+        padding: 0.375rem 1rem;
+    }
+
+    .grid-cartas {
+        grid-template-columns: repeat(10, 1fr);
+        gap: 0.875rem;
+        max-width: 75rem;
+    }
+
+    .carta {
+        border-radius: 0.625rem;
+    }
+
+    .paginacion {
+        padding: 1.5rem;
+        gap: 1.25rem;
+    }
+
+    .pag-num {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 2rem;
+    }
+}
+
+/* ≥ 1800px */
+@media (min-width: 112.5rem) {
+    .header {
+        min-height: 5rem;
+        padding: 0.75rem 0;
+    }
+
+    .header h1 {
+        font-size: 4.5rem;
+    }
+
+    .paint-splatter {
+        display: block;
+        width: 20%;
+        height: auto;
+        margin: -0.2rem auto 0;
+    }
+
+    .searchbar-container {
+        max-width: 50rem;
+    }
+
+    .searchbar {
+        height: 3.5rem;
+        font-size: 1.5rem;
+    }
+
+    .filtros-contenedor {
+        max-width: 100rem;
+    }
+
+    .filtro-btn {
+        font-size: 1.125rem;
+        padding: 0.5rem 1.25rem;
+    }
+
+    .grid-cartas {
+        grid-template-columns: repeat(13, 1fr);
+        gap: 1rem;
+        max-width: 100rem;
+    }
+
+    .carta {
+        border-radius: 0.75rem;
+    }
+
+    .paginacion {
+        padding: 2rem;
+        gap: 1.5rem;
+    }
+
+    .pag-num {
+        width: 6rem;
+        height: 6rem;
+        font-size: 3.5rem;
+        padding: 1rem 0.7rem 0rem 0rem;
+    }
+}
+
+/* ===== LANDSCAPE Y ESPECIALES ===== */
 @media (max-height: 37.5rem) and (orientation: landscape) {
     .header {
         min-height: 2.5rem;
@@ -913,12 +928,11 @@ body {
     }
 
     .grid-cartas {
-        grid-template-columns: repeat(auto-fill, minmax(3.125rem, 1fr));
+        grid-template-columns: repeat(4, 1fr);
         gap: 0.25rem;
     }
 }
 
-/* Dispositivos de alta densidad (Retina) */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .carta-imagen,
     .detalle-imagen {
@@ -927,7 +941,6 @@ body {
     }
 }
 
-/* Pantallas muy pequeñas (menos de 320px) */
 @media (max-width: 20rem) {
     .header h1 {
         font-size: 2rem;
@@ -943,12 +956,11 @@ body {
     }
 
     .grid-cartas {
-        grid-template-columns: repeat(auto-fill, minmax(3.125rem, 1fr));
+        grid-template-columns: repeat(4, 1fr);
         gap: 0.25rem;
     }
 }
 
-/* Accesibilidad */
 @media (prefers-reduced-motion: reduce) {
     .carta,
     .header-back,
