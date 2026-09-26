@@ -3,75 +3,208 @@ import React, {
     useEffect,
     useMemo,
     useDeferredValue,
+    useCallback,
     memo,
+    Fragment,
 } from "react";
 import cardsData from "./assets/cards.json";
 
-const PAGE_SIZE = 36; // Cambiado de 35 a 36
+/* ============ CONSTANTES ============ */
+const PAGE_SIZE = 36;
 const TOTAL_COLS = 13;
 const TOTAL_ROWS = 6;
 const COLS_PERCENT = 100 / (TOTAL_COLS - 1);
 const ROWS_PERCENT = 100 / (TOTAL_ROWS - 1);
+const MAX_PAGINAS_VISIBLES = 5;
 
-// Componente Carta memoizado
-const Carta = memo(function Carta({ carta, onClick }) {
-    const bgPosition = `${carta.col * COLS_PERCENT}% ${carta.row * ROWS_PERCENT}%`;
+const FILTROS = [
+    { id: "todos", label: "Todas" },
+    { id: "mayores", label: "Arcanos Mayores" },
+    { id: "bastos", label: "Bastos" },
+    { id: "copas", label: "Copas" },
+    { id: "espadas", label: "Espadas" },
+    { id: "oros", label: "Oros" },
+];
 
-    let categoriaClase = "carta-mayor";
-    if (carta.arcano === "Menor") {
-        switch (carta.palo) {
-            case "Bastos":
-                categoriaClase = "carta-bastos";
-                break;
-            case "Copas":
-                categoriaClase = "carta-copas";
-                break;
-            case "Espadas":
-                categoriaClase = "carta-espadas";
-                break;
-            case "Oros":
-                categoriaClase = "carta-oros";
-                break;
-            default:
-                categoriaClase = "carta-menor";
-        }
-    }
+const CATEGORIA_CLASE = {
+    Bastos: "carta-bastos",
+    Copas: "carta-copas",
+    Espadas: "carta-espadas",
+    Oros: "carta-oros",
+};
 
-    return (
-        <div
-            className={`carta ${categoriaClase}`}
-            onClick={() => onClick(carta.id)}
-            role="button"
-            tabIndex={0}
-            aria-label={carta.nombre}
-        >
-            <div
-                className="carta-imagen"
-                style={{ backgroundPosition: bgPosition }}
-                loading="lazy"
-            />
-        </div>
-    );
-});
+const ORDEN_CATEGORIA = {
+    Bastos: 1,
+    Copas: 2,
+    Espadas: 3,
+    Oros: 4,
+};
 
-const getCartaById = (id) => cardsData.find((c) => c.id === id);
+/* ============ HELPERS PUROS ============ */
+const normalizar = (texto) =>
+    texto
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+const getBgPosition = (carta) =>
+    `${carta.col * COLS_PERCENT}% ${carta.row * ROWS_PERCENT}%`;
+
+const getCategoriaClase = (carta) => {
+    if (carta.arcano === "Mayor") return "carta-mayor";
+    return CATEGORIA_CLASE[carta.palo] || "carta-menor";
+};
 
 const ordenCategoria = (carta) => {
     if (carta.arcano === "Mayor") return 0;
-    switch (carta.palo) {
-        case "Bastos":
-            return 1;
-        case "Copas":
-            return 2;
-        case "Espadas":
-            return 3;
-        case "Oros":
-            return 4;
-        default:
-            return 5;
-    }
+    return ORDEN_CATEGORIA[carta.palo] ?? 5;
 };
 
+const getCartaById = (id) => cardsData.find((c) => c.id === id);
+
+/**
+ * Convierte la lista plana de cartas en una lista de items a renderizar,
+ * intercalando encabezados de categoría (Arcanos Mayores/Menores) y palo.
+ * Evita mutar variables durante el render (anti-patrón de React).
+ */
+const construirListaRender = (cartas) => {
+    const items = [];
+    let ultimoTipo = null;
+    let ultimoPalo = null;
+
+    for (const carta of cartas) {
+        const tipo = carta.arcano === "Mayor" ? "mayor" : "menor";
+
+        if (tipo !== ultimoTipo) {
+            items.push({
+                kind: "categoria",
+                key: `cat-${tipo}`,
+                titulo:
+                    carta.arcano === "Mayor"
+                        ? "Arcanos Mayores"
+                        : "Arcanos Menores",
+                esPrimerMenor:
+                    carta.arcano === "Menor" && ultimoTipo === "mayor",
+            });
+            ultimoTipo = tipo;
+            ultimoPalo = null;
+        }
+
+        if (tipo === "menor" && carta.palo !== ultimoPalo) {
+            items.push({
+                kind: "palo",
+                key: `palo-${carta.palo}`,
+                titulo: carta.palo,
+                esPrimerPalo: ultimoPalo === null,
+            });
+            ultimoPalo = carta.palo;
+        }
+
+        items.push({ kind: "carta", key: carta.id, carta });
+    }
+
+    return items;
+};
+
+/* ============ COMPONENTES ============ */
+
+const Carta = memo(function Carta({ carta, onClick }) {
+    return (
+        <button
+            type="button"
+            className={`carta ${getCategoriaClase(carta)}`}
+            onClick={() => onClick(carta.id)}
+            aria-label={`Ver detalle de ${carta.nombre}`}
+        >
+            <span
+                className="carta-imagen"
+                style={{ backgroundPosition: getBgPosition(carta) }}
+                aria-hidden="true"
+            />
+        </button>
+    );
+});
+
+/* Términos y definiciones → <dl> / <dt> / <dd> (semántica nativa). */
+function SignificadoBloque({ titulo, significados, invertido = false }) {
+    const entries = Object.entries(significados || {});
+    const idTitulo = `significado-${invertido ? "invertido" : "derecho"}`;
+
+    return (
+        <section
+            className={`significado-bloque${invertido ? " invertido" : ""}`}
+            aria-labelledby={idTitulo}
+        >
+            <h3 id={idTitulo} className="significado-titulo">
+                {titulo}
+            </h3>
+            <dl className="significado-lista">
+                {entries.map(([clave, texto]) => (
+                    <Fragment key={clave}>
+                        <dt className="significado-subtitulo">{clave}</dt>
+                        <dd className="significado-texto">
+                            {texto || "Información no disponible."}
+                        </dd>
+                    </Fragment>
+                ))}
+            </dl>
+        </section>
+    );
+}
+
+function DetalleView({ carta, onVolver }) {
+    const significados = carta.significados || {
+        derecho: {},
+        invertido: {},
+    };
+
+    return (
+        <section className="app">
+            <header className="header">
+                <button
+                    type="button"
+                    className="header-back"
+                    onClick={onVolver}
+                    aria-label="Volver al catálogo"
+                >
+                    ←
+                </button>
+                <h1>Inkebrantable</h1>
+            </header>
+
+            <main className="detalle-container">
+                {/* figure + figcaption: imagen de la carta con su descripción */}
+                <figure className="detalle-ficha">
+                    <div
+                        className="detalle-imagen"
+                        style={{ backgroundPosition: getBgPosition(carta) }}
+                        aria-hidden="true"
+                    />
+                    <figcaption className="detalle-pie">
+                        <h2 className="detalle-nombre">{carta.nombre}</h2>
+                        <p className="detalle-info">
+                            {carta.arcano}
+                            {carta.palo ? ` · ${carta.palo}` : ""}
+                            {carta.numero ? ` · Número ${carta.numero}` : ""}
+                        </p>
+                    </figcaption>
+                </figure>
+
+                <SignificadoBloque
+                    titulo="Al derecho"
+                    significados={significados.derecho}
+                />
+                <SignificadoBloque
+                    titulo="Invertida"
+                    significados={significados.invertido}
+                    invertido
+                />
+            </main>
+        </section>
+    );
+}
+
+/* ============ COMPONENTE PRINCIPAL ============ */
 export default function App() {
     const [query, setQuery] = useState("");
     const [pagina, setPagina] = useState(1);
@@ -79,76 +212,86 @@ export default function App() {
     const [cartaId, setCartaId] = useState(null);
     const [filtrosExpandidos, setFiltrosExpandidos] = useState(false);
 
+    /* --- Router por hash --- */
     useEffect(() => {
         const handleHashChange = () => {
             const hash = window.location.hash;
             if (hash.startsWith("#/carta/")) {
                 const id = hash.replace("#/carta/", "");
-                setCartaId(id);
-                window.scrollTo(0, 0);
+                if (getCartaById(id)) {
+                    setCartaId(id);
+                } else {
+                    window.location.hash = "";
+                    return;
+                }
             } else {
                 setCartaId(null);
-                window.scrollTo(0, 0);
             }
+            window.scrollTo(0, 0);
         };
+
         window.addEventListener("hashchange", handleHashChange);
         handleHashChange();
         return () => window.removeEventListener("hashchange", handleHashChange);
     }, []);
 
-    const irADetalle = (id) => {
+    /* --- Handlers memoizados (para no romper el memo de Carta) --- */
+    const irADetalle = useCallback((id) => {
         window.location.hash = `#/carta/${id}`;
-        setCartaId(id);
-        window.scrollTo(0, 0);
-    };
+    }, []);
 
-    const volverALista = () => {
+    const volverALista = useCallback(() => {
         window.location.hash = "";
-        setCartaId(null);
+    }, []);
+
+    const handleBusqueda = useCallback((e) => {
+        setQuery(e.target.value);
+        setPagina(1);
         window.scrollTo(0, 0);
-    };
+    }, []);
 
+    const handleCategoria = useCallback((cat) => {
+        setCategoria(cat);
+        setPagina(1);
+        window.scrollTo(0, 0);
+    }, []);
+
+    const handlePagina = useCallback((num) => {
+        setPagina(num);
+        window.scrollTo(0, 0);
+    }, []);
+
+    /* --- Filtrado --- */
     const deferredQuery = useDeferredValue(query);
-
-    const normalizar = (texto) => {
-        return texto
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "");
-    };
 
     const cartasFiltradas = useMemo(() => {
         let filtradas = cardsData;
 
-        if (categoria !== "todos") {
-            if (categoria === "mayores") {
-                filtradas = filtradas.filter((c) => c.arcano === "Mayor");
-            } else {
-                filtradas = filtradas.filter(
-                    (c) =>
-                        c.arcano === "Menor" &&
-                        c.palo.toLowerCase() === categoria,
-                );
-            }
+        if (categoria === "mayores") {
+            filtradas = filtradas.filter((c) => c.arcano === "Mayor");
+        } else if (categoria !== "todos") {
+            filtradas = filtradas.filter(
+                (c) =>
+                    c.arcano === "Menor" && c.palo.toLowerCase() === categoria,
+            );
         }
 
-        if (deferredQuery.trim()) {
-            const busqueda = normalizar(deferredQuery);
+        const q = deferredQuery.trim();
+        if (q) {
+            const busqueda = normalizar(q);
             filtradas = filtradas.filter((carta) => {
-                const nombre = normalizar(carta.nombre);
-                const palo = carta.palo ? normalizar(carta.palo) : "";
-                const arcano = normalizar(carta.arcano);
-                const numero = carta.numero ? String(carta.numero) : "";
                 return (
-                    nombre.includes(busqueda) ||
-                    palo.includes(busqueda) ||
-                    arcano.includes(busqueda) ||
-                    numero.includes(busqueda)
+                    normalizar(carta.nombre).includes(busqueda) ||
+                    normalizar(carta.palo ?? "").includes(busqueda) ||
+                    normalizar(carta.arcano).includes(busqueda) ||
+                    String(carta.numero ?? "").includes(busqueda)
                 );
             });
         }
 
-        return filtradas.sort((a, b) => ordenCategoria(a) - ordenCategoria(b));
+        return [...filtradas].sort(
+            (a, b) => ordenCategoria(a) - ordenCategoria(b),
+        );
     }, [deferredQuery, categoria]);
 
     const totalPaginas = Math.ceil(cartasFiltradas.length / PAGE_SIZE);
@@ -159,135 +302,54 @@ export default function App() {
         return cartasFiltradas.slice(inicio, inicio + PAGE_SIZE);
     }, [cartasFiltradas, paginaActual]);
 
-    const handleBusqueda = (e) => {
-        setQuery(e.target.value);
-        setPagina(1);
-        window.scrollTo(0, 0);
-    };
-
-    const handleCategoria = (cat) => {
-        setCategoria(cat);
-        setPagina(1);
-        window.scrollTo(0, 0);
-    };
-
-    const handlePagina = (num) => {
-        setPagina(num);
-        window.scrollTo(0, 0);
-    };
+    const itemsRender = useMemo(
+        () => construirListaRender(cartasPaginadas),
+        [cartasPaginadas],
+    );
 
     const numerosPagina = useMemo(() => {
         if (totalPaginas <= 1) return [];
         const paginas = [];
-        const maxVisibles = 5;
         let inicio = Math.max(1, paginaActual - 2);
-        let fin = Math.min(totalPaginas, inicio + maxVisibles - 1);
-        if (fin - inicio < maxVisibles - 1) {
-            inicio = Math.max(1, fin - maxVisibles + 1);
+        let fin = Math.min(totalPaginas, inicio + MAX_PAGINAS_VISIBLES - 1);
+        if (fin - inicio < MAX_PAGINAS_VISIBLES - 1) {
+            inicio = Math.max(1, fin - MAX_PAGINAS_VISIBLES + 1);
         }
-        for (let i = inicio; i <= fin; i++) {
-            paginas.push(i);
-        }
+        for (let i = inicio; i <= fin; i++) paginas.push(i);
         return paginas;
     }, [paginaActual, totalPaginas]);
 
-    // Vista detalle
+    /* --- Vista detalle --- */
     if (cartaId) {
         const carta = getCartaById(cartaId);
-        if (!carta) {
-            volverALista();
-            return null;
+        if (carta) {
+            return <DetalleView carta={carta} onVolver={volverALista} />;
         }
-        const bgPosition = `${carta.col * COLS_PERCENT}% ${carta.row * ROWS_PERCENT}%`;
-        const significados = carta.significados || {
-            derecho: {},
-            invertido: {},
-        };
-
-        return (
-            <div className="app">
-                <header className="header">
-                    <button
-                        className="header-back"
-                        onClick={volverALista}
-                        aria-label="Volver"
-                    >
-                        ←
-                    </button>
-                    <h1>Cartas</h1>
-                </header>
-                <main className="detalle-container">
-                    <div className="detalle-carta">
-                        <div
-                            className="detalle-imagen"
-                            style={{ backgroundPosition: bgPosition }}
-                        />
-                    </div>
-                    <h2 className="detalle-nombre">{carta.nombre}</h2>
-                    <p className="detalle-info">
-                        {carta.arcano}
-                        {carta.palo ? ` · ${carta.palo}` : ""}
-                        {carta.numero ? ` · Número ${carta.numero}` : ""}
-                    </p>
-
-                    <div className="significado-bloque">
-                        <h3 className="significado-titulo">Al derecho</h3>
-                        {Object.entries(significados.derecho || {}).map(
-                            ([clave, texto]) => (
-                                <div key={clave} className="significado-item">
-                                    <h4 className="significado-subtitulo">
-                                        {clave}
-                                    </h4>
-                                    <p className="significado-texto">
-                                        {texto || "Información no disponible."}
-                                    </p>
-                                </div>
-                            ),
-                        )}
-                    </div>
-
-                    <div className="significado-bloque invertido">
-                        <h3 className="significado-titulo">Invertida</h3>
-                        {Object.entries(significados.invertido || {}).map(
-                            ([clave, texto]) => (
-                                <div key={clave} className="significado-item">
-                                    <h4 className="significado-subtitulo">
-                                        {clave}
-                                    </h4>
-                                    <p className="significado-texto">
-                                        {texto || "Información no disponible."}
-                                    </p>
-                                </div>
-                            ),
-                        )}
-                    </div>
-                </main>
-            </div>
-        );
     }
 
-    // Vista lista
-    let ultimoTipo = null;
-    let ultimoPalo = null;
-
+    /* --- Vista lista --- */
     return (
-        <div className="app">
+        <section className="app">
             <header className="header">
                 <h1>Inkebrantable</h1>
             </header>
 
             <img
                 src="/decoraciones/pink-spots.png"
-                alt="Manchas de pintura"
+                alt=""
+                aria-hidden="true"
                 className="paint-splatter"
             />
 
-            <div className="searchbar-container">
+            {/* --- Buscador --- */}
+            <search className="searchbar-container">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 430 430"
                     fill="none"
                     className="search-icon star-icon"
+                    aria-hidden="true"
+                    focusable="false"
                 >
                     <path
                         stroke="currentColor"
@@ -298,65 +360,50 @@ export default function App() {
                         d="m219.054 48.3 38.9 119.9c.6 2 2.5 3.3 4.5 3.3h126.1c4.6 0 6.5 5.9 2.8 8.6l-50.3 36.6-51.6 37.5c-1.7 1.2-2.4 3.4-1.7 5.3l14.7 45.3 24.2 74.6c1.4 4.4-3.6 8-7.3 5.3l-47.6-34.6-54.3-39.5c-1.7-1.2-3.9-1.2-5.6 0l-48.5 35.3-53.4 38.8c-3.7 2.7-8.8-.9-7.3-5.3l22.2-68.2 16.8-51.7c.6-2-.1-4.1-1.7-5.3l-52.8-38.4-49.2-35.7c-3.7-2.7-1.8-8.6 2.8-8.6h125.8c2.1 0 3.9-1.3 4.5-3.3l39-119.9c1.4-4.4 7.6-4.4 9 0"
                     />
                 </svg>
-
                 <input
                     type="search"
                     className="searchbar"
                     placeholder="Buscar carta..."
+                    aria-label="Buscar cartas"
                     value={query}
                     onChange={handleBusqueda}
-                    aria-label="Buscar cartas"
+                    autoComplete="off"
                 />
-            </div>
+            </search>
 
-            {/* Filtros por categoría con toggle */}
-            <div className="filtros-contenedor">
-                <div
+            {/* --- Filtros (lista de botones) --- */}
+            <nav
+                className="filtros-contenedor"
+                aria-label="Filtros por categoría"
+            >
+                <ul
+                    id="lista-filtros"
                     className={`filtros-lista ${
                         filtrosExpandidos ? "expandido" : "colapsado"
                     }`}
                 >
-                    <button
-                        className={`filtro-btn ${categoria === "todos" ? "activo" : ""}`}
-                        onClick={() => handleCategoria("todos")}
-                    >
-                        Todas
-                    </button>
-                    <button
-                        className={`filtro-btn ${categoria === "mayores" ? "activo" : ""}`}
-                        onClick={() => handleCategoria("mayores")}
-                    >
-                        Arcanos Mayores
-                    </button>
-                    <button
-                        className={`filtro-btn ${categoria === "bastos" ? "activo" : ""}`}
-                        onClick={() => handleCategoria("bastos")}
-                    >
-                        Bastos
-                    </button>
-                    <button
-                        className={`filtro-btn ${categoria === "copas" ? "activo" : ""}`}
-                        onClick={() => handleCategoria("copas")}
-                    >
-                        Copas
-                    </button>
-                    <button
-                        className={`filtro-btn ${categoria === "espadas" ? "activo" : ""}`}
-                        onClick={() => handleCategoria("espadas")}
-                    >
-                        Espadas
-                    </button>
-                    <button
-                        className={`filtro-btn ${categoria === "oros" ? "activo" : ""}`}
-                        onClick={() => handleCategoria("oros")}
-                    >
-                        Oros
-                    </button>
-                </div>
+                    {FILTROS.map(({ id, label }) => (
+                        <li key={id}>
+                            <button
+                                type="button"
+                                className={`filtro-btn ${
+                                    categoria === id ? "activo" : ""
+                                }`}
+                                onClick={() => handleCategoria(id)}
+                                aria-pressed={categoria === id}
+                            >
+                                {label}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
 
                 <button
+                    type="button"
                     className="filtro-toggle"
                     onClick={() => setFiltrosExpandidos((v) => !v)}
+                    aria-expanded={filtrosExpandidos}
+                    aria-controls="lista-filtros"
                     aria-label={
                         filtrosExpandidos
                             ? "Colapsar filtros"
@@ -369,75 +416,60 @@ export default function App() {
                                 ? "/decoraciones/Tim-star(white).png"
                                 : "/decoraciones/Tim-star(grey).png"
                         }
-                        alt={
-                            filtrosExpandidos
-                                ? "Colapsar filtros"
-                                : "Expandir filtros"
-                        }
+                        alt=""
+                        aria-hidden="true"
                         className={`filtro-toggle-img ${
                             filtrosExpandidos ? "rotada-izquierda" : ""
                         }`}
                     />
                 </button>
-            </div>
+            </nav>
 
+            {/* El <main> es el grid: los títulos ocupan toda la fila. */}
             <main className="catalogo">
-                {cartasPaginadas.length === 0 ? (
+                {itemsRender.length === 0 ? (
                     <p className="sin-resultados">No se encontraron cartas</p>
                 ) : (
-                    <div className="grid-cartas">
-                        {cartasPaginadas.map((carta, index) => {
-                            const tipo =
-                                carta.arcano === "Mayor" ? "mayor" : "menor";
-                            let encabezado = null;
-
-                            if (index === 0 || tipo !== ultimoTipo) {
-                                const esPrimerMenor =
-                                    carta.arcano === "Menor" &&
-                                    ultimoTipo === "mayor";
-                                encabezado = (
-                                    <h2
-                                        key={`encabezado-${tipo}`}
-                                        className={`categoria-titulo ${esPrimerMenor ? "primer-menor" : ""}`}
-                                    >
-                                        {carta.arcano === "Mayor"
-                                            ? "Arcanos Mayores"
-                                            : "Arcanos Menores"}
-                                    </h2>
-                                );
-                                ultimoTipo = tipo;
-                                ultimoPalo = null;
-                            }
-
-                            if (tipo === "menor" && carta.palo !== ultimoPalo) {
-                                const esPrimerPalo = ultimoPalo === null;
-                                encabezado = (
-                                    <React.Fragment key={`sub-${carta.palo}`}>
-                                        {encabezado}
-                                        <h3
-                                            className={`palo-titulo ${esPrimerPalo ? "primer-palo" : ""}`}
-                                        >
-                                            {carta.palo}
-                                        </h3>
-                                    </React.Fragment>
-                                );
-                                ultimoPalo = carta.palo;
-                            }
-
+                    itemsRender.map((item) => {
+                        if (item.kind === "categoria") {
                             return (
-                                <React.Fragment key={carta.id}>
-                                    {encabezado}
-                                    <Carta carta={carta} onClick={irADetalle} />
-                                </React.Fragment>
+                                <h2
+                                    key={item.key}
+                                    className={`categoria-titulo ${
+                                        item.esPrimerMenor ? "primer-menor" : ""
+                                    }`}
+                                >
+                                    {item.titulo}
+                                </h2>
                             );
-                        })}
-                    </div>
+                        }
+                        if (item.kind === "palo") {
+                            return (
+                                <h3
+                                    key={item.key}
+                                    className={`palo-titulo ${
+                                        item.esPrimerPalo ? "primer-palo" : ""
+                                    }`}
+                                >
+                                    {item.titulo}
+                                </h3>
+                            );
+                        }
+                        return (
+                            <Carta
+                                key={item.key}
+                                carta={item.carta}
+                                onClick={irADetalle}
+                            />
+                        );
+                    })
                 )}
             </main>
 
             {totalPaginas > 1 && (
                 <footer className="paginacion">
                     <button
+                        type="button"
                         className="pag-btn"
                         onClick={() =>
                             handlePagina(Math.max(1, paginaActual - 1))
@@ -447,7 +479,8 @@ export default function App() {
                     >
                         <img
                             src="/decoraciones/silver-arrow.png"
-                            alt="Anterior"
+                            alt=""
+                            aria-hidden="true"
                             className="pag-arrow left"
                         />
                     </button>
@@ -455,14 +488,22 @@ export default function App() {
                     {numerosPagina.map((num) => (
                         <button
                             key={num}
-                            className={`pag-num ${num === paginaActual ? "activo" : ""}`}
+                            type="button"
+                            className={`pag-num ${
+                                num === paginaActual ? "activo" : ""
+                            }`}
                             onClick={() => handlePagina(num)}
+                            aria-current={
+                                num === paginaActual ? "page" : undefined
+                            }
+                            aria-label={`Ir a página ${num}`}
                         >
                             {num}
                         </button>
                     ))}
 
                     <button
+                        type="button"
                         className="pag-btn"
                         onClick={() =>
                             handlePagina(
@@ -474,12 +515,13 @@ export default function App() {
                     >
                         <img
                             src="/decoraciones/silver-arrow.png"
-                            alt="Siguiente"
+                            alt=""
+                            aria-hidden="true"
                             className="pag-arrow right"
                         />
                     </button>
                 </footer>
             )}
-        </div>
+        </section>
     );
 }

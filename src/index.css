@@ -1,3 +1,15 @@
+/* ============================================================
+   InkeBrantable — Estilos
+   ------------------------------------------------------------
+   Reglas del proyecto:
+   • Sin px → rem / % / vw / vmin + clamp() / min() / max() / calc()
+   • Sin !important
+   • Sin selectores #id
+   • Sin <br> (coherencia HTML)
+   • Grid intrínseco (auto-fill + minmax) en el catálogo
+   • Media queries solo para cambios FUNCIONALES (no de escala)
+   ============================================================ */
+
 /* ===== FUENTES ===== */
 @font-face {
     font-family: "Lucida Blackletter Regular";
@@ -65,8 +77,11 @@
     font-display: swap;
 }
 
-/* ===== Variables ===== */
+/* ============================================================
+   TOKENS GLOBALES (design system)
+   ============================================================ */
 :root {
+    /* --- Colores base --- */
     --primary-pink: #dc2d95;
     --primary-grey: #e5e5e7;
     --primary-teal: #2f5a62;
@@ -75,11 +90,90 @@
     --text-medium: #555;
     --text-light: #888;
     --bg-main: #faf9f6;
-    --white: #ffffff;
+    --white: #fff;
+
+    /* --- Superficies y bordes --- */
+    --surface: #fff;
+    --surface-alt: #f5f7f9;
+    --surface-hover: rgba(255, 255, 255, 0.1);
+    --border-soft: #e0e0e0;
+    --border-strong: var(--primary-teal);
+    --border-invertido: #c0392b;
+
+    /* --- Categorías de carta --- */
+    --cat-mayor: #8c45ff;
+    --cat-bastos: #74a04f;
+    --cat-copas: #e08436;
+    --cat-espadas: #9acfd6;
+    --cat-oros: #e7bb3f;
+
+    /* --- Tipografía fluida ---
+       clamp(min, preferred, max): se adapta sola al viewport. */
+    --fs-h1: clamp(2.65rem, 1.6rem + 3.7vw, 4.75rem);
+    --fs-h2: clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem);
+    --fs-h3: clamp(1.35rem, 1.1rem + 1.2vw, 2.25rem);
+    --fs-h4: clamp(1rem, 0.9rem + 0.4vw, 1.15rem);
+    --fs-body: clamp(0.9375rem, 0.875rem + 0.3vw, 1.1rem);
+    --fs-small: clamp(0.8125rem, 0.75rem + 0.2vw, 0.95rem);
+    --fs-input: clamp(1rem, 0.9rem + 0.5vw, 1.4rem);
+    --search-icon-size: clamp(1rem, 1.2rem + 0.7vw, 2rem);
+    --fs-btn: clamp(0.85rem, 0.75rem + 0.3vw, 1.15rem);
+    --fs-pag: clamp(1.35rem, 1rem + 1vw, 3.5rem);
+
+    /* --- Espaciado --- */
+    --space-3xs: 0.125rem;
+    --space-2xs: 0.25rem;
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 3.75rem;
+    --gutter: clamp(0.25rem, 0.6vw, 1rem);
+
+    /* --- Radios --- */
+    --radius-xs: 0.375rem;
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-pill: 10rem;
+
+    /* --- Sombras --- */
+    --shadow-header: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1);
+    --shadow-sm: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    --shadow-card: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+    --shadow-bloque: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.03);
+
+    /* --- Contenedores (min() → responsive sin MQ) --- */
+    --container-narrow: min(90%, 37.5rem);
+    --container-mid: min(90%, 60rem);
+    --container-wide: min(90%, 78rem);
+    --container-ultra: min(90%, 100rem);
+
+    /* --- Tamaños funcionales fluidos --- */
+    --header-min-h: clamp(3.7rem, 3.15rem + 1.6vw, 5.75rem);
+    --input-h: clamp(2.1rem, 1.9rem + 1vw, 3.75rem);
+    --toggle-size: clamp(2.6rem, 2rem + 2vw, 4rem);
+    --pag-btn-size: clamp(2.4rem, 1.8rem + 1.5vw, 6rem);
+    --pag-arrow-w: clamp(2.8rem, 2rem + 1.5vw, 5rem);
+    --detalle-carta-w: min(80%, 17.5rem);
+    --overlay-h: clamp(6rem, 8vw, 9.375rem);
+
+    /* --- Grid de cartas (auto-responsive) --- */
+    --carta-min-w: clamp(3.5rem, 3.5rem + 2.8vw, 6.5rem);
+    --carta-strip-h: 0.25rem;
+
+    /* --- Colores base tipográficos --- */
+    --ink-body: #333;
+    --ink-detalle-info: #666;
+    --ink-subtitulo: #1e4a52;
 }
 
-/* ===== Reset y base ===== */
-* {
+/* ===== RESET Y BASE ===== */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -89,41 +183,45 @@ html {
     font-size: 100%;
 }
 
+html,
 body {
-    background-color: #faf9f6;
+    min-height: 100vh;
+}
+
+body {
+    background-color: var(--bg-main);
     background-image: url("/backgrounds/full-brickwall.png");
     background-repeat: repeat;
     background-size: 70rem auto;
     font-family:
         -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
         Arial, sans-serif;
-    color: #333;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-size: var(--fs-body);
+    color: var(--ink-body);
     line-height: 1.5;
     position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+/* Degradado decorativo al pie del viewport */
 body::after {
     content: "";
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 150px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    inset: auto 0 0 0;
+    height: var(--overlay-h);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     pointer-events: none;
     z-index: 0;
 }
 
-#root {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 1;
-}
-
+/* ============================================================
+   WRAPPER RAÍZ
+   ------------------------------------------------------------
+   En vez de tocar #root (id → prohibido por buenas prácticas),
+   el wrapper semántico es .app. Es el div que envuelve todo el
+   componente React.
+   ============================================================ */
 .app {
     min-height: 100vh;
     display: flex;
@@ -136,12 +234,12 @@ body::after {
 .header {
     position: sticky;
     top: 0;
-    min-height: 4.7rem;
+    min-height: var(--header-min-h);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 0 0.375rem;
-    box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1);
+    padding: 0 0 var(--space-3xs);
+    box-shadow: var(--shadow-header);
     z-index: 100;
     background-color: #161515;
     background-image: url("/backgrounds/Textura2.jpg");
@@ -151,12 +249,12 @@ body::after {
 }
 
 .header h1 {
-    font-size: 3rem;
+    font-size: var(--fs-h1);
     font-weight: 400;
     letter-spacing: 0.03125rem;
     color: var(--primary-pink);
     font-family: "UnquietSpirits", "Lucida Blackletter Regular", sans-serif;
-    -webkit-text-stroke: 0.5px black;
+    -webkit-text-stroke: 0.03125rem var(--text-dark);
     line-height: 1;
     transition: font-size 0.3s ease;
 }
@@ -164,21 +262,21 @@ body::after {
 .header-back {
     background: none;
     border: none;
-    color: white;
-    font-size: 1.5rem;
+    color: var(--white);
+    font-size: var(--fs-h3);
     cursor: pointer;
     position: absolute;
-    left: 1rem;
+    left: var(--space-md);
     top: 50%;
     transform: translateY(-50%);
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.375rem;
-    transition: background 0.2s;
+    padding: var(--space-2xs) var(--space-xs);
+    border-radius: var(--radius-xs);
+    transition: background 0.2s ease;
     -webkit-tap-highlight-color: transparent;
 }
 
 .header-back:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--surface-hover);
 }
 
 /* ===== VISTA DETALLE ===== */
@@ -188,100 +286,112 @@ body::after {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 1.5rem 1rem;
-    max-width: 37.5rem;
+    padding: var(--space-lg) var(--space-md);
+    max-width: var(--container-narrow);
     margin: 0 auto;
     width: 100%;
 }
 
-.detalle-carta {
-    width: 80%;
-    max-width: 17.5rem;
-    aspect-ratio: 2/3.5;
-    margin-bottom: 1.5rem;
-    border-radius: 0.75rem;
-    overflow: hidden;
-    border: 0.09375rem solid #e0e0e0;
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+.detalle-ficha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: var(--space-lg);
 }
 
 .detalle-imagen {
-    width: 100%;
-    height: 100%;
+    width: var(--detalle-carta-w);
+    aspect-ratio: 2 / 3.5;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 0.09375rem solid var(--border-soft);
+    box-shadow: var(--shadow-card);
     background-image: url("/cartas.webp");
     background-size: 1300% 600%;
     background-repeat: no-repeat;
-    background-position: 0% 0%;
+    background-position: 0 0;
+}
+
+.detalle-pie {
+    width: 100%;
+    margin-top: var(--space-lg);
 }
 
 .detalle-nombre {
-    font-size: 1.5rem;
+    font-size: var(--fs-h2);
     font-weight: 700;
-    color: #2f5a62;
-    margin-bottom: 0.5rem;
+    color: var(--primary-teal);
+    margin-bottom: var(--space-xs);
     text-align: center;
 }
 
 .detalle-info {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 1.5rem;
+    font-size: var(--fs-body);
+    color: var(--ink-detalle-info);
+    margin-bottom: var(--space-lg);
     text-align: center;
 }
 
 .significado-bloque {
-    background: white;
-    border-radius: 0.75rem;
-    padding: 1.25rem;
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
     width: 100%;
-    border: 0.0625rem solid #e0e0e0;
-    margin-bottom: 1.25rem;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.03);
+    border: 0.0625rem solid var(--border-soft);
+    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow-bloque);
 }
 
 .significado-bloque.invertido {
-    background: #f5f7f9;
-    border-left: 0.25rem solid #c0392b;
+    background: var(--surface-alt);
+    border-left: 0.25rem solid var(--border-invertido);
 }
 
 .significado-titulo {
-    font-size: 1.25rem;
+    font-size: var(--fs-h3);
     font-weight: 700;
-    color: #2f5a62;
-    margin-bottom: 1rem;
+    color: var(--primary-teal);
+    margin-bottom: var(--space-md);
     text-align: center;
-    border-bottom: 0.125rem solid #e0e0e0;
-    padding-bottom: 0.625rem;
+    border-bottom: 0.125rem solid var(--border-soft);
+    padding-bottom: var(--space-sm);
     text-transform: uppercase;
     letter-spacing: 0.0625rem;
 }
 
-.significado-item {
-    margin-bottom: 1rem;
-    padding: 0.625rem;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 0.5rem;
+.significado-lista {
+    margin: 0;
 }
 
-.significado-item:last-child {
-    margin-bottom: 0;
-}
-
+/* dt: título del término. Mitad superior de la "tarjeta". */
 .significado-subtitulo {
-    font-size: 1rem;
+    font-size: var(--fs-h4);
     font-weight: 600;
-    color: #1e4a52;
-    margin-bottom: 0.375rem;
+    color: var(--ink-subtitulo);
     text-transform: capitalize;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    padding: var(--space-sm) var(--space-sm) var(--space-2xs);
+    margin-top: var(--space-md);
 }
 
+.significado-subtitulo:first-of-type {
+    margin-top: 0;
+}
+
+/* dd: definición. Mitad inferior de la "tarjeta". */
 .significado-texto {
-    font-size: 0.9375rem;
+    font-size: var(--fs-small);
     line-height: 1.7;
-    color: #333;
+    color: var(--ink-body);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    padding: 0 var(--space-sm) var(--space-sm);
+    margin: 0;
 }
 
-/* ===== IMAGEN DE MANCHAS ===== */
+/* ===== IMAGEN DECORATIVA DE MANCHAS ===== */
 .paint-splatter {
     display: block;
     width: 100%;
@@ -292,34 +402,33 @@ body::after {
 /* ===== BARRA DE BÚSQUEDA ===== */
 .searchbar-container {
     position: relative;
-    padding: 0.5rem;
-    margin: 0;
+    padding: var(--space-xs);
+    margin: 0 auto;
+    width: 100%;
+    max-width: var(--container-mid);
 }
 
 .search-icon {
     position: absolute;
     top: 50%;
     left: 0.9rem;
-    width: 2rem;
-    height: 2rem;
+    width: var(--search-icon-size);
+    height: var(--search-icon-size);
     color: var(--text-dark);
-    transform: translateY(-50%);
-    pointer-events: none;
-}
-
-.star-icon {
     transform: translateY(-50%) rotate(-25deg);
+    pointer-events: none;
+    transition: color 0.2s ease;
 }
 
 .searchbar {
-    padding-left: 2.8rem;
-    padding-right: 1rem;
+    padding-left: calc(var(--fs-input) + var(--space-md));
+    padding-right: var(--space-md);
     width: 100%;
-    height: 2.3rem;
-    border: 2px dashed #000;
-    border-radius: 10rem;
+    height: var(--input-h);
+    border: 0.125rem dashed var(--text-dark);
+    border-radius: var(--radius-pill);
     outline: none;
-    font-size: 1rem;
+    font-size: var(--fs-input);
     appearance: none;
     -webkit-appearance: none;
     background: linear-gradient(
@@ -330,13 +439,16 @@ body::after {
         #c9258e 100%
     );
     color: var(--text-dark);
-    transition: box-shadow 0.2s ease;
+    transition:
+        box-shadow 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
     font-family: "Lucida Blackletter Regular", "UnquietSpirits", sans-serif;
 }
 
 .searchbar::placeholder {
     color: var(--text-dark);
-    font-size: 1.25rem;
+    font-size: var(--fs-input);
     line-height: 1.2;
 }
 
@@ -344,7 +456,7 @@ body::after {
     color: var(--primary-pink);
     box-shadow: 0 0 0 0.125rem var(--text-dark);
     background: var(--text-dark);
-    border: 2px dashed var(--primary-pink);
+    border-color: var(--primary-pink);
 }
 
 .searchbar:focus::placeholder {
@@ -367,8 +479,11 @@ body::after {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: 0 0.5rem 0.5rem;
-    gap: 0.375rem;
+    padding: 0 var(--space-xs) var(--space-xs);
+    gap: var(--space-2xs);
+    margin: 0 auto;
+    width: 100%;
+    max-width: var(--container-wide);
 }
 
 .filtros-lista {
@@ -376,16 +491,20 @@ body::after {
     flex-wrap: wrap;
     justify-content: center;
     flex: 1;
-    margin-top: 0.5rem;
+    margin-top: var(--space-xs);
     min-width: 0;
-    gap: 0.375rem;
+    gap: var(--space-2xs);
     overflow: hidden;
     transition: max-height 0.3s ease-in-out;
+    list-style: none;
 }
 
-/* FIX: colapsado mostraba mal (era 1rem, quedaba casi invisible) */
+.filtros-lista > li {
+    display: flex;
+}
+
 .filtros-lista.colapsado {
-    max-height: 1.85rem;
+    max-height: 1.75rem;
 }
 
 .filtros-lista.expandido {
@@ -398,13 +517,13 @@ body::after {
     justify-content: center;
     flex-shrink: 0;
     padding: 0;
-    width: 3.8rem;
-    height: 3.8rem;
+    width: var(--toggle-size);
+    height: var(--toggle-size);
     border: none;
     border-radius: 0;
     background: none;
     -webkit-tap-highlight-color: transparent;
-    transition: transform 0.2s;
+    transition: transform 0.2s ease;
     cursor: pointer;
 }
 
@@ -425,23 +544,25 @@ body::after {
 }
 
 .filtro-btn {
-    margin-top: 0rem;
-    padding: 0.15rem 0.5rem;
-    font-size: 0.95rem;
-    border: 1.5px solid #000;
-    border-radius: 1.25rem;
+    padding: 0.15rem var(--space-xs);
+    font-size: var(--fs-btn);
+    border: 0.09375rem solid var(--text-dark);
+    border-radius: var(--radius-pill);
     white-space: nowrap;
-    color: #000;
+    color: var(--text-dark);
     background: var(--secondary-pink);
     -webkit-tap-highlight-color: transparent;
     font-family: "Lucida Blackletter Regular", "UnquietSpirits", sans-serif;
-    transition: all 0.2s;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
     cursor: pointer;
 }
 
 .filtro-btn:hover {
     background: var(--primary-pink);
-    border-color: #333;
+    border-color: var(--ink-body);
 }
 
 .filtro-btn.activo {
@@ -453,15 +574,21 @@ body::after {
 
 /* ===== CATÁLOGO ===== */
 .catalogo {
-    flex: 1;
-    padding: 0 0.75rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--carta-min-w), 1fr));
+    gap: var(--gutter);
+    padding: 0 var(--space-sm) var(--space-sm);
+    max-width: var(--container-ultra);
+    width: 100%;
+    margin: 0 auto;
 }
 
-.grid-cartas {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.375rem;
-    padding: 0 0 0.75rem;
+.sin-resultados {
+    grid-column: 1 / -1; /* ocupa toda la fila cuando es el único hijo */
+    text-align: center;
+    padding: var(--space-3xl) var(--space-lg);
+    font-size: var(--fs-body);
+    color: var(--text-light);
 }
 
 .categoria-titulo,
@@ -471,107 +598,108 @@ body::after {
     margin: 0;
     color: var(--secondary-pink);
     font-family: "Lucida Blackletter Regular", sans-serif;
-    -webkit-text-stroke: 0px black;
     line-height: 1;
+    -webkit-text-stroke: 0.2rem var(--text-dark);
+    paint-order: stroke fill;
 }
 
 .categoria-titulo {
-    font-size: 1.75rem;
+    font-size: var(--fs-h2);
     font-weight: 700;
 }
 
 .categoria-titulo.primer-menor {
-    margin-top: 2rem;
+    margin-top: var(--space-xl);
 }
 
 .palo-titulo {
-    font-size: 1.6rem;
+    font-size: var(--fs-h3);
     font-weight: 600;
     color: var(--primary-pink);
-    margin-top: 1.5rem;
+    margin-top: var(--space-lg);
 }
 
 .palo-titulo.primer-palo {
     margin-top: 0;
 }
 
+/* .carta es un <button>: reseteamos sus estilos por defecto
+   y lo usamos como bloque con grid interno (franja + imagen). */
 .carta {
+    display: grid;
+    grid-template-rows: var(--carta-strip-h) 1fr;
     cursor: pointer;
-    border-radius: 0.375rem;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    border-radius: var(--radius-xs);
     overflow: hidden;
-    background: white;
-    border: 0.09375rem solid #e0e0e0;
-    box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.05);
+    background: var(--surface);
+    border: 0.09375rem solid var(--border-soft);
+    box-shadow: var(--shadow-sm);
     transition:
         transform 0.15s ease,
-        box-shadow 0.15s ease;
-    aspect-ratio: 2/3.5;
+        box-shadow 0.15s ease,
+        border-color 0.15s ease;
+    aspect-ratio: 2 / 3.5;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
 }
 
 .carta:hover {
     transform: translateY(-0.125rem);
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-    border-color: #2f5a62;
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-strong);
 }
 
 .carta:active {
     transform: scale(0.97);
-    box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-sm);
 }
 
 .carta:focus-visible {
-    outline: 0.125rem solid #2f5a62;
+    outline: 0.125rem solid var(--border-strong);
     outline-offset: 0.125rem;
 }
 
-.carta-mayor {
-    border-color: #8c45ff;
-}
-.carta-bastos {
-    border-color: #74a04f;
-}
-.carta-copas {
-    border-color: #e08436;
-}
-.carta-espadas {
-    border-color: #9acfd6;
-}
-.carta-oros {
-    border-color: #e7bb3f;
-}
-
+/* Franja superior (pseudo-elemento en la primera fila del grid) */
 .carta::before {
     content: "";
     display: block;
-    height: 0.25rem;
-    border-radius: 0.25rem 0.25rem 0 0;
+    background: var(--carta-color, var(--border-soft));
 }
 
-.carta-mayor::before {
-    background: #8c45ff;
+/* Colores por categoría: definen --carta-color y el borde */
+.carta-mayor {
+    --carta-color: var(--cat-mayor);
+    border-color: var(--cat-mayor);
 }
-.carta-bastos::before {
-    background: #74a04f;
+.carta-bastos {
+    --carta-color: var(--cat-bastos);
+    border-color: var(--cat-bastos);
 }
-.carta-copas::before {
-    background: #e08436;
+.carta-copas {
+    --carta-color: var(--cat-copas);
+    border-color: var(--cat-copas);
 }
-.carta-espadas::before {
-    background: #9acfd6;
+.carta-espadas {
+    --carta-color: var(--cat-espadas);
+    border-color: var(--cat-espadas);
 }
-.carta-oros::before {
-    background: #e7bb3f;
+.carta-oros {
+    --carta-color: var(--cat-oros);
+    border-color: var(--cat-oros);
 }
 
 .carta-imagen {
+    display: block;
     width: 100%;
     height: 100%;
     background-image: url("/cartas.webp");
     background-size: 1300% 600%;
     background-repeat: no-repeat;
-    background-position: 0% 0%;
+    background-position: 0 0;
 }
 
 /* ===== PAGINACIÓN ===== */
@@ -580,8 +708,8 @@ body::after {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 1.25rem;
-    gap: 0.75rem;
+    padding: var(--space-lg);
+    gap: var(--space-sm);
 }
 
 .pag-btn {
@@ -593,15 +721,13 @@ body::after {
     outline: none;
     box-shadow: none;
     -webkit-tap-highlight-color: transparent;
-    transition:
-        background 0.2s ease,
-        opacity 0.2s ease;
+    transition: opacity 0.2s ease;
     cursor: pointer;
     padding: 0;
 }
 
 .pag-arrow {
-    width: 3.5rem;
+    width: var(--pag-arrow-w);
     height: auto;
     display: block;
     border: none;
@@ -610,9 +736,7 @@ body::after {
     filter: none;
     -webkit-user-drag: none;
     user-select: none;
-    transition:
-        opacity 0.2s ease,
-        transform 0.2s ease;
+    transition: opacity 0.2s ease;
 }
 
 .pag-arrow.left {
@@ -623,7 +747,7 @@ body::after {
     transform: rotate(180deg);
 }
 
-.pag-btn:hover:not(:disabled) .pag-arrow {
+.pag-btn:hover:not(:disabled) {
     opacity: 0.8;
 }
 
@@ -639,12 +763,12 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    padding: 0.35rem 0.4rem 0rem 0rem;
+    width: var(--pag-btn-size);
+    height: var(--pag-btn-size);
+    padding: 0.35rem var(--space-2xs) 0 0;
     border: none;
-    border-radius: 0.375rem;
-    font-size: 1.6rem;
+    border-radius: var(--radius-xs);
+    font-size: var(--fs-pag);
     color: var(--white);
     font-family: "aiden", sans-serif;
     background-color: transparent;
@@ -653,7 +777,9 @@ body::after {
     background-repeat: no-repeat;
     background-position: center;
     -webkit-tap-highlight-color: transparent;
-    transition: all 0.2s ease;
+    transition:
+        filter 0.2s ease,
+        background-image 0.2s ease;
     cursor: pointer;
 }
 
@@ -667,282 +793,22 @@ body::after {
 
 .sin-resultados {
     text-align: center;
-    padding: 3.75rem 1.25rem;
-    font-size: 1rem;
-    color: #888;
+    padding: var(--space-3xl) var(--space-lg);
+    font-size: var(--fs-body);
+    color: var(--text-light);
 }
 
-/* ============================================
-   MEDIA QUERIES (mobile-first, de menor a mayor)
-   Base actual: móviles modernos (≈421–599px)
-   ============================================ */
+/* ============================================================
+   MEDIA QUERIES
+   ------------------------------------------------------------
+   Solo para cambios FUNCIONALES (visibilidad, comportamiento,
+   accesibilidad). El responsive de escala lo manejan los
+   clamp()/min()/max()/grid intrínseco de arriba.
+   ============================================================ */
 
-/* Móviles muy pequeños: ≤ 360px */
-@media (max-width: 22.5rem) {
-    .header {
-        min-height: 4rem;
-        padding: 0.25rem 0 0.3rem;
-    }
-
-    .header h1 {
-        font-size: 2.8rem;
-        -webkit-text-stroke: 0.5px black;
-    }
-
-    .searchbar-container {
-        padding: 0.375rem;
-    }
-
-    .searchbar {
-        height: 2rem;
-        font-size: 0.9rem;
-        padding-left: 2.4rem;
-    }
-
-    .searchbar::placeholder {
-        font-size: 1.05rem;
-    }
-
-    .search-icon {
-        left: 0.7rem;
-        width: 1.7rem;
-        height: 1.7rem;
-    }
-
-    .filtro-btn {
-        font-size: 0.85rem;
-        padding: 0.27rem 0.62rem;
-    }
-
-    .filtro-toggle {
-        width: 3.2rem;
-        height: 3.2rem;
-    }
-
-    .filtros-lista.colapsado {
-        max-height: 1.95rem;
-    }
-
-    .categoria-titulo {
-        font-size: 1.5rem;
-    }
-
-    .palo-titulo {
-        font-size: 1.35rem;
-    }
-
-    .grid-cartas {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.25rem;
-    }
-
-    .paginacion {
-        padding: 0.75rem;
-        gap: 0.5rem;
-    }
-
-    .pag-num {
-        width: 2.4rem;
-        height: 2.4rem;
-        font-size: 1.35rem;
-        padding: 0.3rem 0.3rem 0rem 0rem;
-    }
-
-    .pag-arrow {
-        width: 2.8rem;
-    }
-}
-
-/* Móviles chicos: 361–420px */
-@media (min-width: 22.5625rem) and (max-width: 26.25rem) {
-    .header h1 {
-        font-size: 2.75rem;
-    }
-
-    .searchbar {
-        height: 2.15rem;
-        font-size: 0.95rem;
-    }
-
-    .search-icon {
-        left: 0.8rem;
-        width: 1.9rem;
-        height: 1.9rem;
-    }
-
-    .filtro-btn {
-        font-size: 0.85rem;
-        padding: 0.15rem 0.5rem;
-    }
-
-    .filtro-toggle {
-        width: 3.5rem;
-        height: 3.5rem;
-    }
-
-    .filtros-lista.colapsado {
-        max-height: 1.7rem;
-    }
-
-    .categoria-titulo {
-        font-size: 1.65rem;
-    }
-
-    .palo-titulo {
-        font-size: 1.5rem;
-    }
-
-    .grid-cartas {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.3rem;
-    }
-
-    .paginacion {
-        padding: 0.9rem;
-        gap: 0.6rem;
-    }
-
-    .pag-num {
-        width: 2.6rem;
-        height: 2.6rem;
-        font-size: 1.45rem;
-    }
-
-    .pag-arrow {
-        width: 3rem;
-    }
-}
-
-/* Móviles grandes: 421–480px
-   (usa los estilos base, sin overrides — sirve de "puente") */
-
-/* Phablets / móviles XL: 481–599px */
-@media (min-width: 30.0625rem) and (max-width: 37.4375rem) {
-    .grid-cartas {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 0.4rem;
-    }
-
-    .searchbar {
-        height: 2.5rem;
-    }
-
-    .categoria-titulo {
-        font-size: 1.85rem;
-    }
-
-    .palo-titulo {
-        font-size: 1.65rem;
-    }
-
-    .pag-num {
-        width: 3.1rem;
-        height: 3.1rem;
-        font-size: 1.7rem;
-    }
-}
-
-/* Tablets: ≥ 600px */
-@media (min-width: 37.5rem) {
-    .header {
-        min-height: 4rem;
-        padding: 0.5rem 0;
-    }
-
-    .header h1 {
-        font-size: 3rem;
-    }
-
-    .searchbar-container {
-        padding: 0.75rem;
-    }
-
-    .searchbar {
-        height: 3rem;
-        font-size: 1.3rem;
-        padding-left: 3rem;
-    }
-
-    .searchbar::placeholder {
-        font-size: 1.3rem;
-    }
-
-    .search-icon {
-        left: 1.2rem;
-        width: 2.4rem;
-        height: 2.4rem;
-    }
-
-    .filtro-btn {
-        font-size: 1rem;
-        padding: 0.3rem 0.85rem;
-    }
-
-    .filtro-toggle {
-        width: 4rem;
-        height: 4rem;
-    }
-
-    .filtros-lista.colapsado {
-        max-height: 1.9rem;
-    }
-
-    .grid-cartas {
-        grid-template-columns: repeat(7, 1fr);
-        gap: 0.7rem;
-    }
-
-    .carta {
-        border-radius: 0.5rem;
-    }
-
-    .categoria-titulo {
-        font-size: 2rem;
-    }
-
-    .palo-titulo {
-        font-size: 1.75rem;
-    }
-
-    .paginacion {
-        padding: 1.2rem;
-        gap: 1rem;
-    }
-
-    .pag-num {
-        width: 3.2rem;
-        height: 3.2rem;
-        font-size: 1.75rem;
-    }
-
-    .pag-arrow {
-        width: 3.5rem;
-    }
-}
-
-/* Escritorio chico / tablets horizontales: ≥ 900px */
+/* En escritorio los filtros siempre caben → ocultamos el toggle
+   y liberamos el max-height del contenedor colapsable. */
 @media (min-width: 56.25rem) {
-    .header {
-        min-height: 4.2rem;
-        padding: 0.55rem 0;
-    }
-
-    .header h1 {
-        font-size: 3.2rem;
-    }
-
-    .searchbar-container {
-        max-width: 40rem;
-        margin: 0 auto;
-        width: 100%;
-    }
-
-    .filtros-contenedor {
-        max-width: 60rem;
-        margin: 0 auto;
-        width: 100%;
-    }
-
     .filtro-toggle {
         display: none;
     }
@@ -954,203 +820,26 @@ body::after {
         overflow: visible;
     }
 
-    .grid-cartas {
-        grid-template-columns: repeat(7, 1fr);
-        gap: 0.8rem;
-        max-width: 60rem;
-        margin: 0 auto;
-    }
-
-    .categoria-titulo {
-        font-size: 2rem;
-    }
-
-    .palo-titulo {
-        font-size: 1.75rem;
-    }
-
-    .pag-num {
-        width: 3.5rem;
-        height: 3.5rem;
-        font-size: 1.9rem;
-    }
-
-    .pag-arrow {
-        width: 3.8rem;
-    }
-}
-
-/* Monitores grandes: ≥ 1400px */
-@media (min-width: 87.5rem) {
-    .header {
-        min-height: 4.8rem;
-        padding: 0.7rem 0;
-    }
-
-    .header h1 {
-        font-size: 3.8rem;
-    }
-
-    .searchbar-container {
-        max-width: 46rem;
-    }
-
-    .searchbar {
-        height: 3.25rem;
-        font-size: 1.4rem;
-    }
-
-    .searchbar::placeholder {
-        font-size: 1.4rem;
-    }
-
-    .filtros-contenedor {
-        max-width: 78rem;
-    }
-
-    .filtro-btn {
-        font-size: 1.05rem;
-        padding: 0.4rem 1.05rem;
-    }
-
-    .grid-cartas {
-        grid-template-columns: repeat(10, 1fr);
-        gap: 0.9rem;
-        max-width: 78rem;
-    }
-
-    .carta {
-        border-radius: 0.625rem;
-    }
-
-    .categoria-titulo {
-        font-size: 2.25rem;
-    }
-
-    .palo-titulo {
-        font-size: 2rem;
-    }
-
-    .paginacion {
-        padding: 1.5rem;
-        gap: 1.25rem;
-    }
-
-    .pag-num {
-        width: 4.5rem;
-        height: 4.5rem;
-        font-size: 2.5rem;
-    }
-
-    .pag-arrow {
-        width: 4.5rem;
-    }
-}
-
-/* Monitores muy grandes: ≥ 1800px */
-@media (min-width: 112.5rem) {
-    .header {
-        min-height: 5.5rem;
-        padding: 0.9rem 0;
-    }
-
-    .header h1 {
-        font-size: 4.5rem;
-    }
-
     .paint-splatter {
-        display: block;
         width: 20%;
-        height: auto;
         margin: -0.2rem auto 0;
     }
-
-    .searchbar-container {
-        max-width: 52rem;
-    }
-
-    .searchbar {
-        height: 3.75rem;
-        font-size: 1.5rem;
-        padding-left: 3.75rem;
-    }
-
-    .searchbar::placeholder {
-        font-size: 1.5rem;
-    }
-
-    .search-icon {
-        left: 1.5rem;
-        width: 2.75rem;
-        height: 2.75rem;
-    }
-
-    .filtros-contenedor {
-        max-width: 100rem;
-    }
-
-    .filtro-btn {
-        font-size: 1.15rem;
-        padding: 0.55rem 1.3rem;
-    }
-
-    .grid-cartas {
-        grid-template-columns: repeat(13, 1fr);
-        gap: 1rem;
-        max-width: 100rem;
-    }
-
-    .carta {
-        border-radius: 0.75rem;
-    }
-
-    .categoria-titulo {
-        font-size: 2.5rem;
-    }
-
-    .palo-titulo {
-        font-size: 2.25rem;
-    }
-
-    .paginacion {
-        padding: 2rem;
-        gap: 1.5rem;
-    }
-
-    .pag-num {
-        width: 6rem;
-        height: 6rem;
-        font-size: 3.5rem;
-        padding: 1rem 0.7rem 0rem 0rem;
-    }
-
-    .pag-arrow {
-        width: 5rem;
-    }
 }
 
-/* ===== LANDSCAPE Y ESPECIALES ===== */
+/* Modo compacto horizontal (celular en landscape con poca altura). */
 @media (max-height: 37.5rem) and (orientation: landscape) {
     .header {
         min-height: 2.5rem;
-        padding: 0.25rem 0;
+        padding: var(--space-2xs) 0;
     }
 
     .header h1 {
         font-size: 1.5rem;
-    }
-
-    .searchbar-container {
-        padding: 0.375rem;
     }
 
     .searchbar {
         height: 2rem;
         font-size: 0.95rem;
-    }
-
-    .filtros-contenedor {
-        padding: 0 0.375rem 0.375rem;
     }
 
     .filtros-lista.colapsado {
@@ -1160,11 +849,6 @@ body::after {
     .filtro-btn {
         font-size: 0.75rem;
         padding: 0.125rem 0.4rem;
-    }
-
-    .grid-cartas {
-        grid-template-columns: repeat(6, 1fr);
-        gap: 0.3rem;
     }
 
     .pag-num {
@@ -1178,6 +862,7 @@ body::after {
     }
 }
 
+/* Pantallas con densidad alta: mejor render del sprite de cartas. */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .carta-imagen,
     .detalle-imagen {
@@ -1186,13 +871,16 @@ body::after {
     }
 }
 
+/* Accesibilidad: respetar la preferencia de reducción de movimiento. */
 @media (prefers-reduced-motion: reduce) {
     .carta,
     .header-back,
     .filtro-btn,
     .filtros-lista,
     .pag-arrow,
-    .filtro-toggle-img {
+    .filtro-toggle-img,
+    .searchbar,
+    .search-icon {
         transition: none;
     }
 
