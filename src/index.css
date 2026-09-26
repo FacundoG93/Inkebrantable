@@ -109,7 +109,7 @@
 
     /* --- Tipografía fluida ---
        clamp(min, preferred, max): se adapta sola al viewport. */
-    --fs-h1: clamp(2.65rem, 1.6rem + 3.7vw, 4.75rem);
+    --fs-h1: clamp(2.75rem, 1.6rem + 3.7vw, 4.75rem);
     --fs-h2: clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem);
     --fs-h3: clamp(1.35rem, 1.1rem + 1.2vw, 2.25rem);
     --fs-h4: clamp(1rem, 0.9rem + 0.4vw, 1.15rem);
@@ -152,7 +152,7 @@
     --container-ultra: min(90%, 100rem);
 
     /* --- Tamaños funcionales fluidos --- */
-    --header-min-h: clamp(3.7rem, 3.15rem + 1.6vw, 5.75rem);
+    --header-min-h: clamp(4rem, 3.15rem + 1.6vw, 5.75rem);
     --input-h: clamp(2.1rem, 1.9rem + 1vw, 3.75rem);
     --toggle-size: clamp(2.6rem, 2rem + 2vw, 4rem);
     --pag-btn-size: clamp(2.4rem, 1.8rem + 1.5vw, 6rem);
@@ -168,6 +168,16 @@
     --ink-body: #333;
     --ink-detalle-info: #666;
     --ink-subtitulo: #1e4a52;
+
+    /* --- Detalle: paleta pergamino / tinta / oro --- */
+    --parchment: #f3e3c3;
+    --parchment-dark: #d8bf8e;
+    --parchment-deep: #b89870;
+    --ink-old: #2e1f10;
+    --ink-soft: #5a4324;
+    --gilt: #b8893a;
+    --gilt-dark: #7a5620;
+    --blood: #7a1d1a;
 }
 
 /* ===== RESET Y BASE ===== */
@@ -237,8 +247,8 @@ body::after {
     min-height: var(--header-min-h);
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 0 0 var(--space-3xs);
+    align-items: flex-end; /* el h1 se ancla al fondo */
+    padding: 0 0 var(--space-xs); /* solo respiro inferior */
     box-shadow: var(--shadow-header);
     z-index: 100;
     background-color: #161515;
@@ -260,135 +270,15 @@ body::after {
 }
 
 .header-back {
-    background: none;
-    border: none;
-    color: var(--white);
-    font-size: var(--fs-h3);
-    cursor: pointer;
     position: absolute;
-    left: var(--space-md);
-    top: 50%;
     transform: translateY(-50%);
-    padding: var(--space-2xs) var(--space-xs);
-    border-radius: var(--radius-xs);
+    padding: 0;
+    top: 50%;
+    left: var(--space-md);
+    border: none;
+    background: none;
     transition: background 0.2s ease;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.header-back:hover {
-    background: var(--surface-hover);
-}
-
-/* ===== VISTA DETALLE ===== */
-.detalle-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: var(--space-lg) var(--space-md);
-    max-width: var(--container-narrow);
-    margin: 0 auto;
-    width: 100%;
-}
-
-.detalle-ficha {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-bottom: var(--space-lg);
-}
-
-.detalle-imagen {
-    width: var(--detalle-carta-w);
-    aspect-ratio: 2 / 3.5;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    border: 0.09375rem solid var(--border-soft);
-    box-shadow: var(--shadow-card);
-    background-image: url("/cartas.webp");
-    background-size: 1300% 600%;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-}
-
-.detalle-pie {
-    width: 100%;
-    margin-top: var(--space-lg);
-}
-
-.detalle-nombre {
-    font-size: var(--fs-h2);
-    font-weight: 700;
-    color: var(--primary-teal);
-    margin-bottom: var(--space-xs);
-    text-align: center;
-}
-
-.detalle-info {
-    font-size: var(--fs-body);
-    color: var(--ink-detalle-info);
-    margin-bottom: var(--space-lg);
-    text-align: center;
-}
-
-.significado-bloque {
-    background: var(--surface);
-    border-radius: var(--radius-md);
-    padding: var(--space-lg);
-    width: 100%;
-    border: 0.0625rem solid var(--border-soft);
-    margin-bottom: var(--space-lg);
-    box-shadow: var(--shadow-bloque);
-}
-
-.significado-bloque.invertido {
-    background: var(--surface-alt);
-    border-left: 0.25rem solid var(--border-invertido);
-}
-
-.significado-titulo {
-    font-size: var(--fs-h3);
-    font-weight: 700;
-    color: var(--primary-teal);
-    margin-bottom: var(--space-md);
-    text-align: center;
-    border-bottom: 0.125rem solid var(--border-soft);
-    padding-bottom: var(--space-sm);
-    text-transform: uppercase;
-    letter-spacing: 0.0625rem;
-}
-
-.significado-lista {
-    margin: 0;
-}
-
-/* dt: título del término. Mitad superior de la "tarjeta". */
-.significado-subtitulo {
-    font-size: var(--fs-h4);
-    font-weight: 600;
-    color: var(--ink-subtitulo);
-    text-transform: capitalize;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-    padding: var(--space-sm) var(--space-sm) var(--space-2xs);
-    margin-top: var(--space-md);
-}
-
-.significado-subtitulo:first-of-type {
-    margin-top: 0;
-}
-
-/* dd: definición. Mitad inferior de la "tarjeta". */
-.significado-texto {
-    font-size: var(--fs-small);
-    line-height: 1.7;
-    color: var(--ink-body);
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-    padding: 0 var(--space-sm) var(--space-sm);
-    margin: 0;
+    cursor: pointer;
 }
 
 /* ===== IMAGEN DECORATIVA DE MANCHAS ===== */
@@ -790,14 +680,6 @@ body::after {
 .pag-num.activo {
     background-image: url("/decoraciones/pag-seleccionada.png");
 }
-
-.sin-resultados {
-    text-align: center;
-    padding: var(--space-3xl) var(--space-lg);
-    font-size: var(--fs-body);
-    color: var(--text-light);
-}
-
 /* ============================================================
    MEDIA QUERIES
    ------------------------------------------------------------
@@ -888,4 +770,287 @@ body::after {
     .carta:active {
         transform: none;
     }
+}
+
+/* ============================================================
+   VISTA DETALLE — ficha rosa + significados estilo grimorio
+   ============================================================ */
+.detalle-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-2xl) var(--space-md) var(--space-xl);
+    max-width: var(--container-mid);
+    margin: 0 auto;
+    width: 100%;
+    gap: var(--space-xl);
+}
+
+/* ---------- Ficha: imagen + nombre + tags ---------- */
+.detalle-ficha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    position: relative;
+    isolation: isolate;
+}
+
+/* Aura rosa detrás de la carta */
+.detalle-ficha::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 55%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(220, 45, 149, 0.28) 0%,
+        transparent 60%
+    );
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(0.5rem);
+}
+
+/* Marco: gradiente rosa→teal con esquinas rosas */
+.detalle-marco {
+    position: relative;
+    width: var(--detalle-carta-w);
+    padding: var(--space-xs);
+    border-radius: var(--radius-md);
+    background: linear-gradient(
+        145deg,
+        rgba(220, 45, 149, 0.4),
+        rgba(47, 90, 98, 0.4)
+    );
+    box-shadow:
+        0 0 0 0.0625rem rgba(255, 255, 255, 0.18) inset,
+        0 1.25rem 2.5rem rgba(0, 0, 0, 0.35),
+        0 0 1.75rem rgba(220, 45, 149, 0.18);
+}
+
+.detalle-marco::before,
+.detalle-marco::after {
+    content: "";
+    position: absolute;
+    width: 0.75rem;
+    height: 0.75rem;
+    border: 0.09375rem solid var(--secondary-pink);
+    pointer-events: none;
+}
+
+.detalle-marco::before {
+    top: -0.35rem;
+    left: -0.35rem;
+    border-right: none;
+    border-bottom: none;
+    border-top-left-radius: var(--radius-xs);
+}
+
+.detalle-marco::after {
+    bottom: -0.35rem;
+    right: -0.35rem;
+    border-left: none;
+    border-top: none;
+    border-bottom-right-radius: var(--radius-xs);
+}
+
+.detalle-imagen {
+    width: 100%;
+    aspect-ratio: 2 / 3.5;
+    border-radius: var(--radius-sm);
+    background-image: url("/cartas.webp");
+    background-size: 1300% 600%;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    transition: transform 0.4s ease;
+}
+
+.detalle-marco:hover .detalle-imagen {
+    transform: scale(1.02);
+}
+
+/* ---------- Pie: nombre + tags ---------- */
+.detalle-pie {
+    margin-top: var(--space-xl);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    text-align: center;
+}
+
+.detalle-nombre {
+    font-family: "UnquietSpirits", "Lucida Blackletter Regular", serif;
+    font-size: clamp(1.75rem, 1.3rem + 2vw, 2.75rem);
+    font-weight: 400;
+    color: var(--primary-pink);
+    line-height: 1.1;
+    letter-spacing: 0.03125rem;
+    -webkit-text-stroke: 0.03125rem var(--text-dark);
+    paint-order: stroke fill;
+}
+
+.detalle-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2xs);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.detalle-tag {
+    padding: 0.15rem 0.75rem;
+    font-family: "Lucida Blackletter Regular", serif;
+    font-size: var(--fs-small);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--primary-teal);
+    background: rgba(47, 90, 98, 0.08);
+    border: 0.0625rem solid rgba(47, 90, 98, 0.25);
+    border-radius: var(--radius-pill);
+}
+
+/* ---------- Grid de significados ---------- */
+.significados-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    width: 100%;
+}
+
+@media (min-width: 56.25rem) {
+    .significados-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+}
+
+/* ---------- Bloques de significados: hojas de pergamino ---------- */
+.significado-bloque {
+    position: relative;
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(120, 80, 40, 0.08),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 85% 90%,
+            rgba(120, 80, 40, 0.06),
+            transparent 45%
+        ),
+        linear-gradient(180deg, var(--parchment) 0%, var(--parchment-dark) 100%);
+    border-radius: 0.25rem;
+    padding: var(--space-lg);
+    width: 100%;
+    border: 0.0625rem solid var(--gilt-dark);
+    box-shadow:
+        0 0.0625rem 0 rgba(255, 255, 255, 0.6) inset,
+        0 0.125rem 0.25rem rgba(0, 0, 0, 0.15),
+        0 0.75rem 1.5rem rgba(60, 30, 10, 0.25);
+    overflow: hidden;
+}
+
+/* Cinta inferior dorada */
+.significado-bloque::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0.1875rem;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--gilt-dark) 25%,
+        var(--gilt) 50%,
+        var(--gilt-dark) 75%,
+        transparent 100%
+    );
+}
+
+/* Variante "Invertida": manchas rojizas y filete de sangre */
+.significado-bloque.invertido {
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(122, 29, 26, 0.1),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 85% 90%,
+            rgba(122, 29, 26, 0.08),
+            transparent 45%
+        ),
+        linear-gradient(180deg, #f0dac1 0%, #d9b28e 100%);
+    border-color: var(--blood);
+}
+
+.significado-bloque.invertido::before {
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--blood) 30%,
+        var(--blood) 70%,
+        transparent 100%
+    );
+}
+
+.significado-titulo {
+    font-family: "Lucida Blackletter Regular", serif;
+    font-size: clamp(1.1rem, 0.9rem + 0.9vw, 1.5rem);
+    font-weight: 700;
+    color: var(--ink-old);
+    margin-bottom: var(--space-sm);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    line-height: 1;
+}
+
+.significado-bloque.invertido .significado-titulo {
+    color: var(--blood);
+}
+
+.significado-lista {
+    margin: 0;
+}
+
+.significado-subtitulo {
+    font-family: "Lucida Blackletter Regular", serif;
+    font-size: var(--fs-h4);
+    font-weight: 600;
+    color: var(--blood);
+    text-transform: capitalize;
+    letter-spacing: 0.04em;
+    padding: var(--space-sm) var(--space-2xs) var(--space-2xs);
+    margin-top: var(--space-md);
+    border-bottom: 0.0625rem dashed rgba(122, 29, 26, 0.35);
+}
+
+.significado-bloque.invertido .significado-subtitulo {
+    color: #5a1412;
+    border-bottom-color: rgba(90, 20, 18, 0.4);
+}
+
+.significado-subtitulo:first-of-type {
+    margin-top: 0;
+}
+
+.significado-texto {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: var(--fs-small);
+    line-height: 1.8;
+    color: var(--ink-soft);
+    padding: var(--space-2xs) var(--space-2xs) var(--space-sm);
+    margin: 0;
 }

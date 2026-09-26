@@ -125,7 +125,6 @@ const Carta = memo(function Carta({ carta, onClick }) {
     );
 });
 
-/* Términos y definiciones → <dl> / <dt> / <dd> (semántica nativa). */
 function SignificadoBloque({ titulo, significados, invertido = false }) {
     const entries = Object.entries(significados || {});
     const idTitulo = `significado-${invertido ? "invertido" : "derecho"}`;
@@ -167,38 +166,55 @@ function DetalleView({ carta, onVolver }) {
                     onClick={onVolver}
                     aria-label="Volver al catálogo"
                 >
-                    ←
+                    <img
+                        src="/decoraciones/silver-arrow.png"
+                        alt=""
+                        aria-hidden="true"
+                        className="pag-arrow left"
+                    />
                 </button>
                 <h1>Inkebrantable</h1>
             </header>
 
             <main className="detalle-container">
-                {/* figure + figcaption: imagen de la carta con su descripción */}
                 <figure className="detalle-ficha">
-                    <div
-                        className="detalle-imagen"
-                        style={{ backgroundPosition: getBgPosition(carta) }}
-                        aria-hidden="true"
-                    />
+                    <div className="detalle-marco">
+                        <div
+                            className="detalle-imagen"
+                            style={{
+                                backgroundPosition: getBgPosition(carta),
+                            }}
+                            aria-hidden="true"
+                        />
+                    </div>
                     <figcaption className="detalle-pie">
                         <h2 className="detalle-nombre">{carta.nombre}</h2>
-                        <p className="detalle-info">
-                            {carta.arcano}
-                            {carta.palo ? ` · ${carta.palo}` : ""}
-                            {carta.numero ? ` · Número ${carta.numero}` : ""}
-                        </p>
+                        <ul className="detalle-tags">
+                            <li className="detalle-tag">{carta.arcano}</li>
+                            {carta.palo != null && (
+                                <li className="detalle-tag">{carta.palo}</li>
+                            )}
+                            {carta.arcano === "Menor" &&
+                                carta.numero != null && (
+                                    <li className="detalle-tag">
+                                        N.º {carta.numero}
+                                    </li>
+                                )}
+                        </ul>
                     </figcaption>
                 </figure>
 
-                <SignificadoBloque
-                    titulo="Al derecho"
-                    significados={significados.derecho}
-                />
-                <SignificadoBloque
-                    titulo="Invertida"
-                    significados={significados.invertido}
-                    invertido
-                />
+                <div className="significados-grid">
+                    <SignificadoBloque
+                        titulo="Al derecho"
+                        significados={significados.derecho}
+                    />
+                    <SignificadoBloque
+                        titulo="Invertida"
+                        significados={significados.invertido}
+                        invertido
+                    />
+                </div>
             </main>
         </section>
     );
