@@ -685,7 +685,7 @@ body::after {
     }
 
     .header h1 {
-        font-size: 2.4rem;
+        font-size: 2.8rem;
         -webkit-text-stroke: 0.5px black;
     }
 
@@ -710,7 +710,7 @@ body::after {
     }
 
     .filtro-btn {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         padding: 0.27rem 0.62rem;
     }
 
