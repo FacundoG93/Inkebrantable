@@ -594,12 +594,42 @@ body::after {
 
 /* ===== PAGINACIÓN ===== */
 .paginacion {
+    position: relative; /* ← referencia para el belt */
+    overflow: hidden; /* ← corta lo que se salga */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     padding: var(--space-lg);
     gap: var(--space-sm);
+}
+
+.decoracion-cinturon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: clamp(6rem, 54vw, 24rem);
+    height: auto;
+    transform: translate(60%, 0%) rotate(229deg);
+    transform-origin: bottom left;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    z-index: 0;
+}
+
+.decoracion-cuadrille {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: clamp(3.5rem, 15vw, 6.5rem);
+    height: auto;
+    transform: translate(90%, -25%) rotate(225deg);
+    transform-origin: bottom left;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    z-index: 0;
 }
 
 .pag-btn {
@@ -687,7 +717,6 @@ body::after {
    accesibilidad). El responsive de escala lo manejan los
    clamp()/min()/max()/grid intrínseco de arriba.
    ============================================================ */
-
 /* En escritorio los filtros siempre caben → ocultamos el toggle
    y liberamos el max-height del contenedor colapsable. */
 @media (min-width: 56.25rem) {

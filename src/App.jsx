@@ -350,13 +350,6 @@ export default function App() {
                 <h1>Inkebrantable</h1>
             </header>
 
-            <img
-                src="/decoraciones/pink-spots.png"
-                alt=""
-                aria-hidden="true"
-                className="paint-splatter"
-            />
-
             {/* --- Buscador --- */}
             <search className="searchbar-container">
                 <svg
@@ -484,6 +477,18 @@ export default function App() {
 
             {totalPaginas > 1 && (
                 <footer className="paginacion">
+                    <img
+                        src="/decoraciones/cuadrille%20rosa%20y%20negro.png"
+                        alt=""
+                        aria-hidden="true"
+                        className="decoracion-cuadrille"
+                    />
+                    <img
+                        src="/decoraciones/studded%20belt.png"
+                        alt=""
+                        aria-hidden="true"
+                        className="decoracion-cinturon"
+                    />
                     <button
                         type="button"
                         className="pag-btn"
