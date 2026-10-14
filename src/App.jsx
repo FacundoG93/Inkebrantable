@@ -489,6 +489,7 @@ export default function App() {
                         aria-hidden="true"
                         className="decoracion-cinturon"
                     />
+
                     <button
                         type="button"
                         className="pag-btn"
