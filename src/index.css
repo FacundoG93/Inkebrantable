@@ -178,6 +178,12 @@
     --gilt: #b8893a;
     --gilt-dark: #7a5620;
     --blood: #7a1d1a;
+
+    /* --- Detalle: paleta plateada (tags) --- */
+    --silver-light: #e8e8ec;
+    --silver: #b9bcc4;
+    --silver-dark: #6f7278;
+    --silver-deep: #43454a;
 }
 
 /* ===== RESET Y BASE ===== */
@@ -944,9 +950,9 @@ body::after {
     font-size: var(--fs-small);
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--primary-teal);
-    background: rgba(47, 90, 98, 0.08);
-    border: 0.0625rem solid rgba(47, 90, 98, 0.25);
+    color: var(--silver-deep);
+    background: var(--silver-light);
+    border: 0.0625rem solid var(--silver);
     border-radius: var(--radius-pill);
 }
 
